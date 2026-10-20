@@ -25,3 +25,7 @@ Po připojení domény nastavte `siteUrl` a produktovou HTTPS adresu, znovu sest
 ## Živá prohlídka přes GitHub Pages
 
 Připravený soubor `.github/workflows/pages.yml` sestaví a otestuje web a publikuje pouze `dist/`. Spouští se při push do main nebo ručně. Zkusí také zapnout Pages; pokud vestavěný token nemá oprávnění změnit nastavení repozitáře, musí Pages jednou zapnout vlastník. V repozitáři nastavte Settings → Pages → Source: GitHub Actions a poté Actions → Náhled webu na GitHub Pages → Run workflow. Skutečnou adresu zobrazí úspěšná úloha deploy. Dostupnost Pages závisí na viditelnosti repozitáře a tarifu. Tento postup vyžaduje nejprve uložení zdrojů a workflow do GitHubu. Aktuálně nebyl workflow vzdáleně spuštěn a veřejná adresa není potvrzená.
+
+### Nejjednodušší aktivace připraveného náhledu
+
+Statický výstup byl nahrán také do větve `gh-pages`. V Settings → Pages nastavte Source: Deploy from a branch, Branch: gh-pages a Folder: / (root), poté Save. Tato cesta nevyžaduje ruční spouštění workflow. Obsahuje jen veřejný výstup dist, žádný rukopis ani zdrojové přílohy. Stav publikace je nutné ověřit v GitHubu; přístup k API a github.io byl z cloudového prostředí blokován síťovou politikou. Workflow v repozitáři je ponechán jako volitelná ručně spouštěná alternativa pro režim GitHub Actions.

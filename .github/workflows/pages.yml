@@ -1,7 +1,5 @@
 name: Náhled webu na GitHub Pages
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -18,9 +16,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - run: npm run build
       - run: npm test
       - uses: actions/upload-pages-artifact@v3
