@@ -92,7 +92,7 @@ nav a:hover{opacity:1;color:var(--sea)}
 .trust span+span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);margin-right:18px}
 
 /* ---------- Jeden italský den ---------- */
-.day{background:var(--day);transition:background-color 1.2s ease;padding-bottom:110px}
+.day{background:var(--day);transition:background-color 1.2s ease;padding-bottom:68px}
 .day-intro{text-align:center;padding-block:120px 40px}
 .day-intro h2{font-size:clamp(46px,6vw,84px);margin-top:16px}
 .day-intro h2 em{color:var(--coral)}
@@ -114,13 +114,25 @@ nav a:hover{opacity:1;color:var(--sea)}
 
 /* ---------- Obsah knihy ---------- */
 /* Obsah jako rozevřená kniha ve skutečném formátu 135 × 210 mm. */
-/* Všech šestnáct kapitol: tichý závěr Italského dne, bez vlastního bloku */
-.chapters{max-width:960px;text-align:center;padding-top:30px}
-.chapters h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(28px,2.6vw,34px);color:var(--ink);margin-bottom:22px}
-.ch-flow{display:flex;flex-wrap:wrap;justify-content:center;gap:.5em 1.5em;font-family:var(--display);font-weight:500;font-size:clamp(19px,1.9vw,24px);line-height:1.3;color:var(--ink)}
-.ch-flow i{font-style:normal;font-variant:small-caps;color:var(--coral);margin-right:.25em;letter-spacing:.03em}
-.ch-extra{margin:22px auto 0;max-width:560px;color:var(--soft);font-size:16px}
-@media (min-width:700px){.ch-flow span{white-space:nowrap}}
+/* Obsah: na stránce jen jedna věta, celý obsah v panelu na vyžádání */
+.ov-line{text-align:center;padding-top:96px}
+.ov-sentence{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(23px,2.3vw,29px);line-height:1.35;color:var(--ink);max-width:640px;margin:0 auto;text-wrap:balance}
+.toc-link{margin-top:16px;background:none;border:0;padding:4px 2px;font-family:var(--body);font-size:16px;color:var(--ink);border-bottom:1px solid var(--coral);cursor:pointer;transition:color .2s}
+.toc-link:hover{color:var(--coral)}
+.toc-link::after{content:" →";color:var(--coral)}
+.toc-panel{position:fixed;inset:0;z-index:60;display:flex;justify-content:flex-end;background:rgba(31,58,68,.32);backdrop-filter:blur(3px);animation:fadeIn .35s ease}
+.toc-panel[hidden]{display:none}
+.toc-sheet{position:relative;width:min(460px,100%);height:100%;overflow:auto;background:#FFFCF4;padding:64px 46px 48px;box-shadow:-30px 0 60px -30px rgba(0,0,0,.35);animation:sheetIn .5s cubic-bezier(.2,.8,.2,1)}
+.toc-sheet h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:40px;text-align:center;margin-bottom:26px}
+.toc-sheet ol{list-style:none;margin:0;padding:0;font-family:var(--display);font-weight:500;font-size:19px;line-height:1.25}
+.toc-sheet li{display:grid;grid-template-columns:2.6em 1fr;gap:.5em;padding:7px 0;border-bottom:1px solid var(--line)}
+.toc-sheet li i{font-style:normal;font-variant:small-caps;color:var(--coral);text-align:right}
+.toc-sheet li.x{font-style:italic;color:var(--soft)}
+.toc-foot{margin-top:22px;text-align:center;color:var(--soft);font-size:14px}
+.toc-close{position:absolute;right:18px;top:16px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:none;font-size:24px;line-height:1;color:var(--ink);cursor:pointer}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes sheetIn{from{transform:translateX(40px);opacity:0}}
+@keyframes sheetUp{from{transform:translateY(60px);opacity:0}}
 /* ---------- Citát: pruh moře mezi dvěma břehy ---------- */
 .quote{position:relative;overflow:hidden;text-align:center;color:var(--cream);padding-block:190px;
   background:linear-gradient(180deg,#9AD3C6 0%,#4C9A9C 15%,#226C78 40%,#1A5F6C 60%,#3F8F95 85%,#9AD3C6 100%)}
@@ -275,10 +287,10 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   .dots button.on{width:24px;opacity:.75}
 
   /* Obsah: prvních šest položek, zbytek na klepnutí */
-  .chapters{padding:8px 20px 70px}
-  .chapters h3{font-size:27px;margin-bottom:14px}
-  .ch-flow{flex-direction:column;align-items:center;gap:9px;font-size:19px;line-height:1.3}
-  .ch-extra{font-size:15px}
+  .ov-line{padding:6px 20px 66px}
+  .toc-panel{align-items:flex-end}
+  .toc-sheet{height:86vh;width:100%;border-radius:22px 22px 0 0;padding:52px 22px calc(30px + env(safe-area-inset-bottom,0px));animation-name:sheetUp}
+  .toc-sheet ol{font-size:18px}
 
   .quote{padding-block:120px}
   .quote blockquote{font-size:31px}
@@ -341,7 +353,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 <header>
   <div class="wrap head">
     <a class="logo" href="#">Žít po italsku</a>
-    <nav aria-label="Navigace"><a href="#den">Italský den</a><a href="#obsah">Obsah</a><a href="#autorka">Autorka</a><a href="#otazky">Otázky</a></nav>
+    <nav aria-label="Navigace"><a href="#den">Italský den</a><a href="#obsah" data-toc>Obsah</a><a href="#autorka">Autorka</a><a href="#otazky">Otázky</a></nav>
     <a class="btn" href="#objednat" data-buy>Koupit <em data-price></em></a>
   </div>
 </header>
@@ -400,10 +412,9 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
     </div>
     <div class="dots"><button type="button" class="on" aria-label="Ráno, 8:00"></button><button type="button" aria-label="Oběd, 13:00"></button><button type="button" aria-label="Večer, 19:30"></button></div>
   </div>
-  <div class="wrap chapters reveal" id="obsah">
-    <h3>Všech šestnáct kapitol</h3>
-    <p class="ch-flow"><span><i>i.</i>&nbsp;Itálie není země. Je to tempo.</span> <span><i>ii.</i>&nbsp;Ráno, které určuje den</span> <span><i>iii.</i>&nbsp;Jídlo jako rituál, ne jako povinnost</span> <span><i>iv.</i>&nbsp;Styl jako energie</span> <span><i>v.</i>&nbsp;Komunikace, která nikam nespěchá</span> <span><i>vi.</i>&nbsp;Práce bez permanentního napětí</span> <span><i>vii.</i>&nbsp;Volný čas bez pocitu viny</span> <span><i>viii.</i>&nbsp;Il dolce far niente</span> <span><i>ix.</i>&nbsp;Italská dlouhověkost: co za ní skutečně je</span> <span><i>x.</i>&nbsp;Nedokonalost, která nechá člověka dýchat</span> <span><i>xi.</i>&nbsp;Radost jako způsob života</span> <span><i>xii.</i>&nbsp;Italové a&nbsp;rodina</span> <span><i>xiii.</i>&nbsp;Jak Itálie změnila moje vztahy</span> <span><i>xiv.</i>&nbsp;Samota, která není prázdná</span> <span><i>xv.</i>&nbsp;Kde je domov, když se člověk změní</span> <span><i>xvi.</i>&nbsp;Jak si vytvořit vlastní italský svět odkudkoli</span></p>
-    <p class="ch-extra">Na začátku úvod, na konci závěr Nečekejte na život a&nbsp;30 malých rozhodnutí pro pomalejší život.</p>
+  <div class="wrap ov-line reveal" id="obsah">
+    <p class="ov-sentence">A&nbsp;dalších třináct kapitol o&nbsp;práci, odpočinku, rodině, samotě i&nbsp;domově.</p>
+    <button class="toc-link" type="button" data-toc>Prolistovat obsah</button>
   </div>
 </section>
 
@@ -467,6 +478,15 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
     <nav aria-label="Patička"><a href="#">Obchodní podmínky</a><a href="#">Ochrana osobních údajů</a><a href="#">Kontakt</a><span>© 2026 Linda Valešová</span></nav>
   </div>
 </footer>
+
+<div class="toc-panel" id="toc" hidden>
+  <div class="toc-sheet" role="dialog" aria-modal="true" aria-labelledby="toc-h">
+    <button class="toc-close" type="button" aria-label="Zavřít obsah">×</button>
+    <h3 id="toc-h">Obsah</h3>
+    <ol><li class="x"><i></i><span>Úvod</span></li><li><i>i.</i><span>Itálie není země. Je to tempo.</span></li><li><i>ii.</i><span>Ráno, které určuje den</span></li><li><i>iii.</i><span>Jídlo jako rituál, ne jako povinnost</span></li><li><i>iv.</i><span>Styl jako energie</span></li><li><i>v.</i><span>Komunikace, která nikam nespěchá</span></li><li><i>vi.</i><span>Práce bez permanentního napětí</span></li><li><i>vii.</i><span>Volný čas bez pocitu viny</span></li><li><i>viii.</i><span>Il dolce far niente</span></li><li><i>ix.</i><span>Italská dlouhověkost: co za ní skutečně je</span></li><li><i>x.</i><span>Nedokonalost, která nechá člověka dýchat</span></li><li><i>xi.</i><span>Radost jako způsob života</span></li><li><i>xii.</i><span>Italové a&nbsp;rodina</span></li><li><i>xiii.</i><span>Jak Itálie změnila moje vztahy</span></li><li><i>xiv.</i><span>Samota, která není prázdná</span></li><li><i>xv.</i><span>Kde je domov, když se člověk změní</span></li><li><i>xvi.</i><span>Jak si vytvořit vlastní italský svět odkudkoli</span></li><li class="x"><i></i><span>Závěr: Nečekejte na život</span></li><li class="x"><i></i><span>30 malých rozhodnutí pro pomalejší život</span></li></ol>
+    <p class="toc-foot">Brožovaná · 160 stran</p>
+  </div>
+</div>
 
 <div class="dock" aria-label="Rychlý nákup">
   <img src="../assets/obalka.webp" width="512" height="800" alt="">
@@ -596,6 +616,18 @@ let heroOut = false, offerIn = false;
 const sync = () => dock.classList.toggle('show', heroOut && !offerIn);
 new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; sync(); }).observe(hero);
 new IntersectionObserver(([e]) => { offerIn = e.isIntersecting; sync(); }).observe(offer);
+
+/* Celý obsah v panelu. Fokus přesouváme jen při ovládání klávesnicí, myš a prst tak nevidí rámeček. */
+const tocPanel = document.getElementById('toc'), tocClose = tocPanel.querySelector('.toc-close');
+let tocReturn = null, viaKeys = false;
+addEventListener('keydown', () => viaKeys = true, true);
+addEventListener('pointerdown', () => viaKeys = false, true);
+function openToc(e) { e.preventDefault(); tocReturn = e.currentTarget; tocPanel.hidden = false; document.body.style.overflow = 'hidden'; if (viaKeys) tocClose.focus(); }
+function closeToc() { tocPanel.hidden = true; document.body.style.overflow = ''; if (viaKeys) tocReturn?.focus(); else document.activeElement?.blur(); }
+document.querySelectorAll('[data-toc]').forEach(b => b.addEventListener('click', openToc));
+tocClose.addEventListener('click', closeToc);
+tocPanel.addEventListener('click', e => { if (e.target === tocPanel) closeToc(); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && !tocPanel.hidden) closeToc(); });
 </script>
 </body>
 </html>
