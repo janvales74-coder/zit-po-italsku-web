@@ -132,40 +132,49 @@ nav a:hover{opacity:1;color:var(--sea)}
 .page li.extra{font-style:italic;color:var(--soft)}
 .page li.extra:first-child{margin-bottom:.3em}
 .page li.extra.end{margin-top:.3em}
-/* ---------- Citát ---------- */
-.quote{background:var(--sea);color:var(--cream);padding-block:130px;position:relative;overflow:hidden;text-align:center}
-.quote::before{content:"";position:absolute;left:50%;top:-200px;width:600px;height:600px;translate:-50% 0;border-radius:50%;background:radial-gradient(closest-side,rgba(236,178,76,.35),transparent)}
-.quote blockquote{position:relative;margin:0 auto;max-width:960px;font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(36px,5vw,68px);line-height:1.1}
-.quote cite{position:relative;display:block;margin-top:30px;font-family:var(--display);font-style:normal;font-size:22px;color:var(--gold)}
+/* ---------- Citát: pruh moře mezi dvěma břehy ---------- */
+.quote{position:relative;overflow:hidden;text-align:center;color:var(--cream);padding-block:190px;
+  background:linear-gradient(180deg,#9AD3C6 0%,#4C9A9C 15%,#226C78 40%,#1A5F6C 60%,#3F8F95 85%,#9AD3C6 100%)}
+.quote canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.quote .wrap{position:relative;z-index:3}
+.quote blockquote{text-wrap:balance;margin:0 auto;max-width:900px;font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(36px,4.8vw,64px);line-height:1.12;text-shadow:0 2px 28px rgba(10,50,60,.35)}
+.quote cite{display:block;margin-top:28px;font-family:var(--display);font-style:normal;font-size:22px;color:#FFE3A6}
+.shore.top{top:-1px;bottom:auto}
+.shore.cream{color:var(--cream)}
 
-/* ---------- Autorka ---------- */
-.author{padding-block:120px;display:grid;grid-template-columns:auto 1fr;gap:90px;align-items:center}
-.portrait{width:380px;aspect-ratio:1;border-radius:50%;overflow:hidden;position:relative;box-shadow:0 0 0 14px var(--cream),0 0 0 15px var(--peach)}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
-.author h2{font-size:clamp(48px,5.4vw,76px);margin:14px 0 22px}
+/* ---------- Autorka: oblouk a za ním vycházející slunce z úvodu ---------- */
+.author{padding-block:140px 130px;display:grid;grid-template-columns:auto 1fr;gap:100px;align-items:center}
+.portrait{position:relative;width:380px;max-width:100%}
+.portrait::before{content:"";position:absolute;left:50%;top:-52px;width:80%;aspect-ratio:1;translate:-50% 0;border-radius:50%;background:radial-gradient(circle at 50% 45%,#FFE6A6 0%,var(--gold) 42%,var(--coral) 100%)}
+.portrait img{position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;border-radius:200px 200px 14px 14px;box-shadow:0 40px 60px -40px rgba(19,60,70,.6)}
+.author h2{font-size:clamp(48px,5.4vw,76px);margin:0 0 22px}
 .author .big{font-family:var(--display);font-size:28px;font-weight:500;line-height:1.3;font-style:italic;color:var(--sea);margin-bottom:22px}
 .author p{color:var(--soft);max-width:600px}
 .author p+p{margin-top:14px}
 .author .link{display:inline-block;margin-top:26px;color:var(--ink)}
 
-/* ---------- Nabídka ---------- */
-.offer{padding-block:20px 120px}
-.offer-card{position:relative;border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#FCE3C2 0%,var(--peach) 55%,#F2B08F 100%);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding:80px 90px}
-.offer-card::before{content:"";position:absolute;right:-120px;bottom:-200px;width:520px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#FFE3A0,var(--gold) 50%,transparent 72%);opacity:.75}
-.offer-card>*{position:relative}
-.offer h2{font-size:clamp(42px,4.8vw,66px);margin:14px 0 18px}
-.offer h2 em{color:var(--sea)}
+/* ---------- Nákup: druhý den ráno, kniha znovu na horizontu ---------- */
+.offer{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--cream) 0%,#FFF1D6 30%,#FCE0B4 64%,#F8CD9E 100%)}
+.offer-grid{position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;align-items:end;gap:60px;padding-top:120px}
+.offer-copy{padding-bottom:150px}
+.offer h2{font-size:clamp(42px,4.6vw,64px);margin-bottom:22px}
 .price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-bottom:6px}
 .price b{font-family:var(--display);font-size:clamp(60px,7vw,76px);font-weight:600;line-height:1;white-space:nowrap}
 .price span{color:var(--ink);opacity:.75;font-size:15px}
 .specs{font-size:15px;opacity:.8}
-.offer .note{margin:22px 0 30px;max-width:420px}
+.offer .note{margin:22px 0 30px;max-width:440px}
 .pay{margin-top:18px;font-size:14px;opacity:.8}
-.offer .book{justify-self:center;width:min(290px,70vw);animation:none;transform:rotate(-3deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-.offer .book:hover{transform:rotate(0) translateY(-8px)}
+.offer-scene{position:relative;justify-self:center;display:grid;justify-items:center;--sun:420px}
+.offer-scene::before{content:"";position:absolute;left:50%;bottom:72px;width:var(--sun);height:calc(var(--sun) * .62);translate:-50% 0;z-index:-1;--r:calc(var(--sun) / 2);
+  background:radial-gradient(circle var(--r) at 50% var(--r),#FFF1C4 0,var(--gold) calc(var(--r) * .5),#F2A25E calc(var(--r) - 1px),transparent var(--r))}
+.offer .book{width:min(250px,60vw);animation:none}
+.offer-sea{position:relative;height:230px;margin-top:-72px;z-index:1;overflow:hidden;background:linear-gradient(180deg,#86C0B6 0%,#4C9A9C 18%,#2A7680 55%,#1C6370 100%)}
+.offer-sea canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.offer-sea::before{content:"";position:absolute;inset:0 0 auto;height:28px;background:linear-gradient(180deg,rgba(252,224,180,.6),transparent);z-index:2}
+.offer-sea-cta{display:none}
 
 /* ---------- FAQ ---------- */
-.faq{padding-block:0 120px;max-width:860px}
+.faq{padding-block:20px 110px;max-width:860px}
 .faq h2{font-size:clamp(40px,4.4vw,58px);text-align:center;margin-bottom:40px}
 .faq details{border-top:1px solid var(--line)}
 .faq details:last-child{border-bottom:1px solid var(--line)}
@@ -175,7 +184,9 @@ nav a:hover{opacity:1;color:var(--sea)}
 .faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
 .faq details p{padding-bottom:24px;color:var(--soft)}
 
-footer{background:var(--ink);color:#C9D6D6;padding-block:60px 120px;font-size:15px}
+/* ---------- Patička: hluboké moře za břehem ---------- */
+footer{position:relative;overflow:hidden;color:#D3E6E4;padding-block:40px 120px;font-size:15px;background:linear-gradient(180deg,#1C6370 0%,#14525E 45%,#0F4350 100%)}
+footer .foot{position:relative;z-index:3}
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px}
 footer .logo{color:var(--cream);font-size:34px}
 footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
@@ -215,14 +226,17 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 /* Tablet na výšku a menší: navigace pryč, sekce pod sebou. */
 @media (max-width:960px){
   nav{display:none}
-  .author{grid-template-columns:1fr;gap:44px}
-  .portrait{width:min(300px,76vw);justify-self:center}
+  .author{grid-template-columns:1fr;gap:64px;justify-items:center;text-align:center}
+  .author p{margin-inline:auto}
+  .portrait{width:min(320px,76vw)}
   .spread{grid-template-columns:1fr;max-width:480px}
   .page.left{display:none}
   .page.right{aspect-ratio:auto;border-radius:6px;background:#FFFCF4;padding:40px 24px}
   .page ol{font-size:17px}
-  .offer-card{grid-template-columns:1fr;padding:50px 32px;gap:30px}
-  .offer .book{order:-1;width:200px}
+  .offer-grid{grid-template-columns:1fr;justify-items:center;text-align:center;gap:10px;padding-top:96px}
+  .offer-copy{padding-bottom:34px}
+  .offer .price{justify-content:center}
+  .offer .note{margin-inline:auto}
   .dock{display:flex}
 }
 /* ===== Telefon: vlastní rozvržení ===== */
@@ -285,37 +299,40 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   .js .page.right:not(.open) li:nth-child(n+7){display:none}
   .js .more{display:block;margin:14px auto 0;background:none;border:1px solid var(--line);border-radius:999px;padding:10px 22px;font-family:var(--body);font-size:15px;color:var(--ink);cursor:pointer}
 
-  .quote{padding-block:70px}
+  .quote{padding-block:120px}
   .quote blockquote{font-size:31px}
+  .quote cite{font-size:19px}
 
-  /* Autorka: malý portrét vedle jména */
-  .author{grid-template-columns:92px 1fr;gap:0 18px;align-items:center;padding-block:64px}
+  /* Autorka: malý oblouk se sluncem vedle jména */
+  .author{grid-template-columns:92px 1fr;gap:0 18px;align-items:center;justify-items:start;text-align:left;padding-block:72px 64px}
   .author>div:not(.portrait){display:contents}
-  .portrait{width:92px;justify-self:start;box-shadow:0 0 0 5px var(--cream),0 0 0 6px var(--peach)}
+  .portrait{width:92px}
+  .portrait::before{top:-14px}
+  .portrait img{border-radius:60px 60px 8px 8px;box-shadow:0 14px 24px -16px rgba(19,60,70,.6)}
   .author h2{font-size:38px;margin:0}
   .author .big,.author p,.author .link{grid-column:1/-1}
   .author .big{margin:24px 0 16px;font-size:23px}
   .author .link{justify-self:start}
 
-  /* Nákup: kniha vedle ceny */
-  .offer{padding-block:0 64px}
-  .offer-card{grid-template-columns:100px 1fr;grid-template-areas:"h h" "k p" "k s" "n n" "b b" "y y";gap:0 20px;align-items:start;padding:34px 20px 28px;border-radius:18px}
-  .offer-card>div:first-child{display:contents}
-  .offer-card>div:first-child>*{position:relative}
-  .offer-card h2{grid-area:h;font-size:34px;margin:0 0 22px}
-  .offer .book{grid-area:k;width:100px;order:0}
-  .offer .price{grid-area:p;align-self:end;margin:0}
-  .offer .price b{font-size:50px}
-  .offer .price span{flex-basis:100%}
-  .offer .specs{grid-area:s;margin-top:8px;font-size:14px}
-  .offer .note{grid-area:n;margin:22px 0}
-  .offer-card .btn{grid-area:b;width:100%}
-  .offer .pay{grid-area:y;text-align:center;margin-top:14px}
+  /* Nákup: text, kniha na horizontu, tlačítko na moři (jako úvod) */
+  .offer-grid{padding-top:64px}
+  .offer h2{font-size:34px;margin-bottom:14px}
+  .offer .price b{font-size:52px}
+  .offer .note{font-size:16px;margin:16px auto 4px}
+  .offer-copy{padding-bottom:24px}
+  .offer-copy .btn,.offer-copy .pay{display:none}
+  .offer-scene{--sun:min(300px,78vw)}
+  .offer .book{width:min(42vw,170px)}
+  .offer-scene::before{bottom:56px}
+  .offer-sea{height:auto;margin-top:-56px;padding:82px 20px 30px}
+  .offer-sea-cta{display:block;position:relative;z-index:3;text-align:center}
+  .offer-sea-cta .btn{width:100%;max-width:360px;padding-block:17px}
+  .offer-sea-cta .pay{color:#E3F1F1;opacity:1;margin-top:14px;font-size:13.5px}
 
-  .faq{padding-bottom:70px}
+  .faq{padding-block:8px 64px}
   .faq h2{font-size:36px;margin-bottom:24px}
   .faq summary{font-size:22px;padding-block:18px}
-  footer{padding-block:44px 110px}
+  footer{padding-block:24px 110px}
 }
 @keyframes sunM{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
 @media (max-width:360px){
@@ -443,10 +460,13 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 </section>
 
 <section class="quote" aria-label="Ukázka z knihy">
+  <canvas aria-hidden="true"></canvas>
+  <svg class="shore foam top" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34Q180 52 360 34T720 34T1080 34T1440 34T1800 34T2160 34T2520 34T2880 34V0H0z" fill="currentColor"/></svg><svg class="shore sand top cream" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26Q240 42 480 26T960 26T1440 26T1920 26T2400 26T2880 26V0H0z" fill="currentColor"/></svg>
   <div class="wrap reveal">
     <blockquote>„Vaše italská cesta nezačíná v&nbsp;Itálii. Začíná ve chvíli, kdy se rozhodnete žít jinak.“</blockquote>
     <cite>Linda Valešová</cite>
   </div>
+  <svg class="shore foam" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26Q180 8 360 26T720 26T1080 26T1440 26T1800 26T2160 26T2520 26T2880 26V60H0z" fill="currentColor"/></svg><svg class="shore sand cream" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34Q240 18 480 34T960 34T1440 34T1920 34T2400 34T2880 34V60H0z" fill="currentColor"/></svg>
 </section>
 
 <section class="wrap author" id="autorka" aria-labelledby="linda">
@@ -460,20 +480,6 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   </div>
 </section>
 
-<section class="wrap offer" id="objednat" aria-labelledby="koupit">
-  <div class="offer-card reveal">
-    <div>
-      <h2 id="koupit">Italská lehkost začíná první stránkou</h2>
-      <div class="price"><b data-price></b><span>včetně DPH</span></div>
-      <p class="specs">Brožovaná · 160 stran · 135&nbsp;×&nbsp;210&nbsp;mm</p>
-      <p class="note">Odešleme ji do dvou pracovních dnů, takže stihne i&nbsp;Vánoce. Kdyby vám nesedla, do čtrnácti dnů ji můžete vrátit.</p>
-      <a class="btn" href="#" data-buy>Objednat knihu <em data-price></em></a>
-      <p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p>
-    </div>
-    <div class="book"><img src="../assets/obalka.webp" width="512" height="800" loading="lazy" alt="Obálka knihy Žít po italsku"></div>
-  </div>
-</section>
-
 <section class="wrap faq" id="otazky" aria-labelledby="dotazy">
   <h2 id="dotazy" class="reveal">Na co se lidé ptají</h2>
   <div class="reveal">
@@ -483,6 +489,28 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
     <details><summary>Co když mi kniha nesedne?</summary><p>Do 14 dnů od převzetí ji můžete vrátit a&nbsp;peníze vám pošleme zpátky.</p></details>
   </div>
 </section>
+
+<section class="offer" id="objednat" aria-labelledby="koupit">
+  <div class="wrap offer-grid">
+    <div class="offer-copy reveal">
+      <h2 id="koupit">Italská lehkost začíná první stránkou</h2>
+      <div class="price"><b data-price></b><span>včetně DPH</span></div>
+      <p class="specs">Brožovaná · 160 stran · 135&nbsp;×&nbsp;210&nbsp;mm</p>
+      <p class="note">Odešleme ji do dvou pracovních dnů, takže stihne i&nbsp;Vánoce. Kdyby vám nesedla, do čtrnácti dnů ji můžete vrátit.</p>
+      <a class="btn" href="#" data-buy>Objednat knihu <em data-price></em></a>
+      <p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p>
+    </div>
+    <div class="offer-scene">
+      <div class="book"><img src="../assets/obalka.webp" width="512" height="800" loading="lazy" alt="Obálka knihy Žít po italsku"><img class="refl" src="../assets/obalka.webp" width="512" height="800" loading="lazy" alt="" aria-hidden="true"></div>
+    </div>
+  </div>
+  <div class="offer-sea">
+    <canvas aria-hidden="true"></canvas>
+    <div class="offer-sea-cta"><a class="btn btn-light" href="#" data-buy>Objednat knihu <em data-price></em></a><p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p></div>
+  </div>
+</section>
+
+
 </main>
 
 <footer>
@@ -567,45 +595,58 @@ more.addEventListener('click', () => {
   more.textContent = open ? 'Skrýt' : 'Celý obsah';
 });
 
-/* Moře: sluneční třpyt se směrem k divákovi rozšiřuje, vlnky pomalu plují. */
-const canvas = document.querySelector('.sea canvas'), ctx = canvas.getContext('2d');
-let W = 0, H = 0, glints = [], ripples = [], running = false;
+/* Moře: sluneční třpyt se směrem k divákovi rozšiřuje, vlnky pomalu plují.
+   Stejné moře je v úvodu, u citátu (třpyt rozptýlený po hladině) a u nákupu (třpyt pod knihou). */
 const gauss = () => (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
-function setupSea() {
-  const dpr = Math.min(devicePixelRatio || 1, 2);
-  W = canvas.clientWidth; H = canvas.clientHeight;
-  canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  glints = Array.from({ length: Math.round(W / 5) }, () => {
-    const d = Math.random() ** 1.5;
-    return { d, y: 4 + d * (H * .6), x: W / 2 + gauss() * (30 + 300 * d), len: 2 + (4 + 30 * d) * Math.random(), th: .8 + 1.6 * d, sp: .6 + Math.random() * 1.8, ph: Math.random() * 6.28 };
-  });
-  ripples = Array.from({ length: Math.round(W / 22) }, () => {
-    const d = Math.random() ** 1.3;
-    return { d, y: 6 + d * (H * .62), x: Math.random() * W, len: 16 + 120 * d * Math.random(), v: (4 + 14 * d) * (Math.random() < .5 ? -1 : 1), a: .05 + .08 * Math.random() };
-  });
-}
-function drawSea(t) {
-  ctx.clearRect(0, 0, W, H);
-  const glow = ctx.createRadialGradient(W / 2, 0, 0, W / 2, 0, H * 1.1);
-  glow.addColorStop(0, 'rgba(255,214,140,.35)'); glow.addColorStop(1, 'rgba(255,214,140,0)');
-  ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
-  ctx.lineCap = 'round';
-  for (const r of ripples) {
-    const x = ((r.x + r.v * t) % (W + 200) + W + 200) % (W + 200) - 100;
-    ctx.strokeStyle = `rgba(255,255,255,${r.a})`; ctx.lineWidth = .8 + r.d;
-    ctx.beginPath(); ctx.moveTo(x, r.y); ctx.quadraticCurveTo(x + r.len / 2, r.y - 1.5 - 2 * r.d, x + r.len, r.y); ctx.stroke();
+function makeSea(canvas, { center = () => .5, scattered = false } = {}) {
+  const ctx = canvas.getContext('2d');
+  let W = 0, H = 0, glints = [], ripples = [], running = false, cx = 0;
+  function setup() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = canvas.clientWidth; H = canvas.clientHeight; if (!W || !H) return;
+    canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cx = W * center();
+    glints = Array.from({ length: Math.round(W / (scattered ? 10 : 5)) }, () => {
+      const d = Math.random() ** 1.5;
+      return scattered
+        ? { d, y: 40 + Math.random() * (H - 80), x: Math.random() * W, len: 2 + 14 * Math.random(), th: 1 + Math.random(), sp: .5 + Math.random() * 1.5, ph: Math.random() * 6.28, k: .55 }
+        : { d, y: 4 + d * (H * .6), x: cx + gauss() * (30 + 300 * d), len: 2 + (4 + 30 * d) * Math.random(), th: .8 + 1.6 * d, sp: .6 + Math.random() * 1.8, ph: Math.random() * 6.28, k: 1 };
+    });
+    ripples = Array.from({ length: Math.round(W / 22) }, () => {
+      const d = Math.random() ** 1.3;
+      return { d, y: scattered ? 30 + Math.random() * (H - 60) : 6 + d * (H * .62), x: Math.random() * W, len: 16 + 120 * d * Math.random(), v: (4 + 14 * d) * (Math.random() < .5 ? -1 : 1), a: .05 + .08 * Math.random() };
+    });
   }
-  for (const g of glints) {
-    const a = Math.max(0, Math.sin(t * g.sp + g.ph)) ** 3 * (1 - .35 * g.d);
-    if (a < .02) continue;
-    ctx.strokeStyle = `rgba(255,230,170,${a})`; ctx.lineWidth = g.th;
-    ctx.beginPath(); ctx.moveTo(g.x - g.len / 2, g.y); ctx.lineTo(g.x + g.len / 2, g.y); ctx.stroke();
+  function draw(t) {
+    if (!W || !H) return;
+    ctx.clearRect(0, 0, W, H);
+    if (!scattered) {
+      const glow = ctx.createRadialGradient(cx, 0, 0, cx, 0, H * 1.1);
+      glow.addColorStop(0, 'rgba(255,214,140,.35)'); glow.addColorStop(1, 'rgba(255,214,140,0)');
+      ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+    }
+    ctx.lineCap = 'round';
+    for (const r of ripples) {
+      const x = ((r.x + r.v * t) % (W + 200) + W + 200) % (W + 200) - 100;
+      ctx.strokeStyle = `rgba(255,255,255,${r.a})`; ctx.lineWidth = .8 + r.d;
+      ctx.beginPath(); ctx.moveTo(x, r.y); ctx.quadraticCurveTo(x + r.len / 2, r.y - 1.5 - 2 * r.d, x + r.len, r.y); ctx.stroke();
+    }
+    for (const g of glints) {
+      const a = Math.max(0, Math.sin(t * g.sp + g.ph)) ** 3 * (1 - .35 * g.d) * g.k;
+      if (a < .02) continue;
+      ctx.strokeStyle = `rgba(255,230,170,${a})`; ctx.lineWidth = g.th;
+      ctx.beginPath(); ctx.moveTo(g.x - g.len / 2, g.y); ctx.lineTo(g.x + g.len / 2, g.y); ctx.stroke();
+    }
   }
+  function loop(ms) { if (!running) return; draw(ms / 1000); requestAnimationFrame(loop); }
+  setup(); draw(1.3);
+  addEventListener('resize', () => { setup(); draw(1.3); });
+  if (!calm) new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) requestAnimationFrame(loop); }).observe(canvas);
 }
-function loop(ms) { if (!running) return; drawSea(ms / 1000); requestAnimationFrame(loop); }
-setupSea(); drawSea(1.3);
-addEventListener('resize', () => { setupSea(); drawSea(1.3); });
-if (!calm) new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) requestAnimationFrame(loop); }).observe(canvas);
+makeSea(document.querySelector('.sea canvas'));
+makeSea(document.querySelector('.quote canvas'), { scattered: true });
+const offerCanvas = document.querySelector('.offer-sea canvas'), offerBook = document.querySelector('.offer .book');
+makeSea(offerCanvas, { center: () => { const b = offerBook.getBoundingClientRect(), c = offerCanvas.getBoundingClientRect(); return (b.left + b.width / 2 - c.left) / c.width; } });
 
 const spread = document.getElementById('spread');
 const openBook = () => { const r = spread.getBoundingClientRect(); if (calm || r.top < innerHeight * .75) { spread.classList.remove('closed'); removeEventListener('scroll', openBook); } };
