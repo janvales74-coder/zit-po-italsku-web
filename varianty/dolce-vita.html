@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Žít po italsku · Dolce vita</title>
+<title>Žít po italsku · Linda Valešová</title>
 <meta name="description" content="Kniha Lindy Valešové o umění zpomalit. Jeden italský den, který si můžete prožít kdekoli.">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,13 @@
   --display:'Cormorant Garamond','Cormorant',Garamond,Georgia,serif;
   --body:'Commissioner','Optima','Candara',system-ui,sans-serif;
   --gutter:max(20px,env(safe-area-inset-left,0px));
+  /* Pět velikostí pro celý web. Kurzíva jen v citátu. */
+  --fs-title:clamp(76px,9vw,124px);
+  --fs-h2:clamp(36px,3.6vw,52px);
+  --fs-h3:clamp(27px,2.3vw,34px);
+  --fs-lead:clamp(19px,1.5vw,21px);
+  --fs-small:15px;
+  --edge:max(20px,(100vw - 1200px) / 2 + 20px);
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -36,40 +43,42 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1;margin:0;text-wrap:balance}
 p{margin:0}
 .wrap{width:min(1200px,100%);margin-inline:auto;padding-left:var(--gutter);padding-right:max(20px,env(safe-area-inset-right,0px))}
-.label{font-family:var(--display);font-style:italic;font-size:24px;font-weight:500;color:var(--coral)}
+.label{font-size:var(--fs-small);color:var(--soft)}
 :focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-radius:4px}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:16px;background:var(--sea);color:var(--cream);text-decoration:none;font-family:var(--body);font-weight:450;font-size:17px;letter-spacing:.03em;padding:18px 32px;border-radius:4px;border:0;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(19,80,95,.8)}
-.btn em{font-family:var(--display);font-size:22px;font-weight:600;color:var(--gold);font-style:italic}
+.btn .bp{padding-left:14px;border-left:1px solid rgba(255,247,236,.35);font-variant-numeric:tabular-nums}
 .link{text-decoration:none;border-bottom:1px solid var(--coral);padding-bottom:2px;transition:color .2s}
 .link:hover{color:var(--coral)}
 
 /* ---------- Hlavička ---------- */
 header{position:absolute;left:0;right:0;top:0;z-index:20}
 .head{display:flex;justify-content:space-between;align-items:center;height:84px;gap:20px}
-.logo{font-family:var(--display);font-style:italic;font-weight:600;font-size:28px;text-decoration:none;white-space:nowrap}
+.logo{font-family:var(--display);font-weight:600;font-size:27px;text-decoration:none;white-space:nowrap;letter-spacing:-.01em}
 nav{display:flex;gap:34px;font-size:15px}
 nav a{text-decoration:none;opacity:.85}
 nav a:hover{opacity:1;color:var(--sea)}
 .head .btn{padding:11px 20px;font-size:15px}
-.head .btn em{font-size:18px}
+.head .btn .bp{padding-left:12px}
 
 /* ---------- Hero: slunce nad mořem ---------- */
-.hero{--sea-h:300px;--sun:440px;position:relative;overflow:hidden;background:linear-gradient(180deg,#FFF3DF 0%,#FCE1BE 40%,var(--peach) 66%,#F4B998 82%);padding-top:120px}
-.sun{position:absolute;left:50%;bottom:calc(var(--sea-h) - var(--sun) * .38);width:var(--sun);aspect-ratio:1;border-radius:50%;translate:-50% 0;background:radial-gradient(circle at 50% 45%,#FFE6A6 0%,var(--gold) 42%,var(--coral) 100%);animation:sunrise 2.4s cubic-bezier(.2,.8,.2,1) both;filter:saturate(1.05)}
-@keyframes sunrise{from{transform:translateY(180px);opacity:.3}to{transform:none;opacity:1}}
-.hero h1{position:relative;text-align:center;font-size:clamp(76px,13vw,200px);font-weight:500;letter-spacing:-.025em;line-height:.88;color:var(--ink);z-index:2}
-.hero h1 em{font-weight:500;color:var(--sea)}
-.hero h1 .w{display:inline-block;animation:letterUp 1.2s cubic-bezier(.2,.8,.2,1) both}
-.hero h1 .w:nth-child(2){animation-delay:.12s}.hero h1 .w:nth-child(3){animation-delay:.24s}
-@keyframes letterUp{from{opacity:0;transform:translateY(.35em)}to{opacity:1;transform:none}}
-.hero .tag{text-align:center;margin-bottom:22px;animation:letterUp 1s both}
-.scene{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:90px;margin-top:8px;z-index:3}
-.scene .lead{text-wrap:balance;font-family:var(--display);font-size:27px;line-height:1.3;font-weight:500;padding-top:120px;max-width:320px;justify-self:end;text-align:right;animation:letterUp 1s .5s both}
-.buybox{padding-top:110px;max-width:330px;animation:letterUp 1s .65s both}
-.buybox p{font-size:15px;color:var(--ink);margin-top:14px;opacity:.85}
-.book{width:min(270px,58vw);position:relative;animation:rise 1.6s .3s cubic-bezier(.2,.8,.2,1) both}
+.hero{--sea-h:260px;position:relative;overflow:hidden;background:linear-gradient(180deg,#FFF3DF 0%,#FCE1BE 40%,var(--peach) 66%,#F4B998 82%);padding-top:116px}
+@keyframes letterUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
+.hero-copy{padding-bottom:30px;display:flex;flex-direction:column;align-items:center}
+.hero-copy>*{animation:letterUp 1s cubic-bezier(.2,.8,.2,1) both}
+.hero-copy>:nth-child(2){animation-delay:.08s}.hero-copy>:nth-child(3){animation-delay:.18s}.hero-copy>:nth-child(4){animation-delay:.28s}
+.byline{font-size:17px;font-weight:450;letter-spacing:.01em;color:var(--ink);margin-bottom:12px}
+.hero h1{font-size:min(var(--fs-title),13.4vw);font-weight:500;letter-spacing:-.022em;line-height:.92;color:var(--ink);white-space:nowrap}
+.hero .lead{margin-top:20px;font-size:var(--fs-lead);line-height:1.5;color:var(--ink);opacity:.82;max-width:380px}
+.buybox{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:26px}
+.buybox p{font-size:var(--fs-small);color:var(--ink);opacity:.75}
+/* Kniha stojí na horizontu, za ní slunce (horní část kruhu, spodek schovává moře) */
+.scene{position:relative;display:grid;justify-items:center;--sun:380px}
+.scene::before{content:"";position:absolute;left:50%;bottom:72px;width:var(--sun);height:calc(var(--sun) * .62);translate:-50% 0;z-index:-1;--r:calc(var(--sun) / 2);
+  background:radial-gradient(circle var(--r) at 50% var(--r),#FFE6A6 0,var(--gold) calc(var(--r) * .45),var(--coral) calc(var(--r) - 1px),transparent var(--r));transform-origin:50% 100%;animation:sunM 2.2s cubic-bezier(.2,.8,.2,1) both}
+.book{width:clamp(150px,30vh - 40px,210px);position:relative;animation:rise 1.6s .3s cubic-bezier(.2,.8,.2,1) both}
 .book>img{border-radius:2px 5px 5px 2px;box-shadow:0 30px 40px -30px rgba(19,60,70,.7)}
 .book::before{content:"";position:absolute;inset:0 auto 0 0;width:12px;background:linear-gradient(90deg,rgba(0,0,0,.25),rgba(255,255,255,.2) 50%,transparent);z-index:1;border-radius:2px 0 0 2px}
 .book .refl{position:absolute;left:0;top:100%;width:100%;margin-top:3px;transform:scaleY(-1);opacity:.2;filter:blur(2.5px) saturate(.7);pointer-events:none;
@@ -87,16 +96,16 @@ nav a:hover{opacity:1;color:var(--sea)}
 .shore.sand{color:var(--day);transition:color 1.2s ease;animation:shore 34s linear infinite reverse}
 @keyframes shore{to{transform:translateX(-50%)}}
 @keyframes wash{0%,100%{translate:0 0}50%{translate:0 -7px}}
-.trust{position:absolute;left:0;right:0;bottom:0;z-index:3;text-shadow:0 1px 6px rgba(10,50,60,.6);display:flex;justify-content:center;flex-wrap:wrap;gap:6px 28px;color:#E3F1F1;font-size:14.5px;letter-spacing:.04em;padding:0 20px 70px}
+.trust{position:absolute;left:0;right:0;bottom:0;z-index:3;text-shadow:0 1px 6px rgba(10,50,60,.6);display:flex;justify-content:center;flex-wrap:wrap;gap:6px 28px;color:#E3F1F1;font-size:14.5px;letter-spacing:.02em;padding:0 20px 70px}
 .trust span{display:inline-flex;align-items:center;gap:10px}
 .trust span+span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);margin-right:18px}
 
 /* ---------- Jeden italský den ---------- */
 .day{background:var(--day);transition:background-color 1.2s ease;padding-bottom:68px}
-.day-intro{text-align:center;padding-block:120px 40px}
-.day-intro h2{font-size:clamp(46px,6vw,84px);margin-top:16px}
-.day-intro h2 em{color:var(--coral)}
-.day-intro p{max-width:600px;margin:22px auto 0;color:var(--soft)}
+.day-intro{padding-block:130px 40px}
+.day-intro h2{font-size:var(--fs-h2);max-width:14ch}
+
+.day-intro p{max-width:520px;margin-top:20px;color:var(--soft)}
 .story{--gap:80px;display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);container-type:inline-size}
 .frame{position:sticky;top:12vh;height:76vh;border-radius:300px 300px 12px 12px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(19,60,70,.6);background:var(--peach)}
 @supports (width:1cqi){.frame{--fh:min(76vh,(100cqi - var(--gap)) * .625);height:var(--fh);top:calc(50vh - var(--fh) / 2)}}
@@ -106,28 +115,30 @@ nav a:hover{opacity:1;color:var(--sea)}
 .step{min-height:76vh;display:flex;flex-direction:column;justify-content:center;opacity:.28;transition:opacity .6s}
 .step.on{opacity:1}
 .step time{font-family:var(--display);font-style:italic;font-size:clamp(70px,8vw,120px);font-weight:500;line-height:1;color:var(--coral);font-variant-numeric:tabular-nums}
-.step h3{font-size:clamp(34px,3.4vw,46px);margin:10px 0 18px}
+.step .when{margin-top:8px;font-size:var(--fs-small);color:var(--soft);letter-spacing:.02em}
+.step h3{font-size:var(--fs-h3);margin:10px 0 16px}
 .step p{color:var(--soft);max-width:440px}
 .step h3,.step p{text-wrap:pretty}
-.step .ch{margin-top:16px;font-family:var(--display);font-style:italic;font-size:20px;color:var(--sea-2)}
+
 .step img{display:none}
 
 /* ---------- Obsah knihy ---------- */
 /* Obsah jako rozevřená kniha ve skutečném formátu 135 × 210 mm. */
 /* Obsah: na stránce jen jedna věta, celý obsah v panelu na vyžádání */
-.ov-line{text-align:center;padding-top:96px}
-.ov-sentence{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(23px,2.3vw,29px);line-height:1.35;color:var(--ink);max-width:640px;margin:0 auto;text-wrap:balance}
+.ov-line{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--gap,80px);padding-top:40px}
+.ov-line>*{grid-column:2;justify-self:start}
+.ov-sentence{font-size:var(--fs-lead);line-height:1.5;color:var(--ink);max-width:440px}
 .toc-link{margin-top:16px;background:none;border:0;padding:4px 2px;font-family:var(--body);font-size:16px;color:var(--ink);border-bottom:1px solid var(--coral);cursor:pointer;transition:color .2s}
 .toc-link:hover{color:var(--coral)}
 .toc-link::after{content:" →";color:var(--coral)}
 .toc-panel{position:fixed;inset:0;z-index:60;display:flex;justify-content:flex-end;background:rgba(31,58,68,.32);backdrop-filter:blur(3px);animation:fadeIn .35s ease}
 .toc-panel[hidden]{display:none}
 .toc-sheet{position:relative;width:min(460px,100%);height:100%;overflow:auto;background:#FFFCF4;padding:64px 46px 48px;box-shadow:-30px 0 60px -30px rgba(0,0,0,.35);animation:sheetIn .5s cubic-bezier(.2,.8,.2,1)}
-.toc-sheet h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:40px;text-align:center;margin-bottom:26px}
+.toc-sheet h3{font-family:var(--display);font-weight:500;font-size:40px;text-align:center;margin-bottom:26px}
 .toc-sheet ol{list-style:none;margin:0;padding:0;font-family:var(--display);font-weight:500;font-size:19px;line-height:1.25}
 .toc-sheet li{display:grid;grid-template-columns:2.6em 1fr;gap:.5em;padding:7px 0;border-bottom:1px solid var(--line)}
-.toc-sheet li i{font-style:normal;font-variant:small-caps;color:var(--coral);text-align:right}
-.toc-sheet li.x{font-style:italic;color:var(--soft)}
+.toc-sheet li i{font-style:normal;font-variant:small-caps;color:var(--soft);text-align:right}
+.toc-sheet li.x{color:var(--soft)}
 .toc-foot{margin-top:22px;text-align:center;color:var(--soft);font-size:14px}
 .toc-close{position:absolute;right:18px;top:16px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:none;font-size:24px;line-height:1;color:var(--ink);cursor:pointer}
 @keyframes fadeIn{from{opacity:0}}
@@ -138,8 +149,8 @@ nav a:hover{opacity:1;color:var(--sea)}
   background:linear-gradient(180deg,#9AD3C6 0%,#4C9A9C 15%,#226C78 40%,#1A5F6C 60%,#3F8F95 85%,#9AD3C6 100%)}
 .quote canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
 .quote .wrap{position:relative;z-index:3}
-.quote blockquote{text-wrap:balance;margin:0 auto;max-width:900px;font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(36px,4.8vw,64px);line-height:1.12;text-shadow:0 2px 28px rgba(10,50,60,.35)}
-.quote cite{display:block;margin-top:28px;font-family:var(--display);font-style:normal;font-size:22px;color:#FFE3A6}
+.quote blockquote{text-wrap:balance;margin:0 auto;max-width:820px;font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(32px,3.8vw,50px);line-height:1.18;text-shadow:0 2px 28px rgba(10,50,60,.35)}
+.quote cite{display:block;margin-top:24px;font-style:normal;font-size:var(--fs-small);letter-spacing:.02em;color:rgba(255,247,236,.82)}
 .shore.top{top:-1px;bottom:auto}
 .shore.cream{color:var(--cream)}
 
@@ -148,8 +159,8 @@ nav a:hover{opacity:1;color:var(--sea)}
 .portrait{position:relative;width:380px;max-width:100%}
 .portrait::before{content:"";position:absolute;left:50%;top:-52px;width:80%;aspect-ratio:1;translate:-50% 0;border-radius:50%;background:radial-gradient(circle at 50% 45%,#FFE6A6 0%,var(--gold) 42%,var(--coral) 100%)}
 .portrait img{position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;border-radius:200px 200px 14px 14px;box-shadow:0 40px 60px -40px rgba(19,60,70,.6)}
-.author h2{font-size:clamp(48px,5.4vw,76px);margin:0 0 22px}
-.author .big{font-family:var(--display);font-size:28px;font-weight:500;line-height:1.3;font-style:italic;color:var(--sea);margin-bottom:22px}
+.author h2{font-size:var(--fs-h2);margin:0 0 20px}
+.author .big{font-size:var(--fs-lead);line-height:1.5;color:var(--ink);margin-bottom:18px;max-width:520px}
 .author p{color:var(--soft);max-width:600px}
 .author p+p{margin-top:14px}
 .author .link{display:inline-block;margin-top:26px;color:var(--ink)}
@@ -158,9 +169,9 @@ nav a:hover{opacity:1;color:var(--sea)}
 .offer{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--cream) 0%,#FFF1D6 30%,#FCE0B4 64%,#F8CD9E 100%)}
 .offer-grid{position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;align-items:end;gap:60px;padding-top:120px}
 .offer-copy{padding-bottom:150px}
-.offer h2{font-size:clamp(42px,4.6vw,64px);margin-bottom:22px}
+.offer h2{font-size:var(--fs-h2);margin-bottom:22px;max-width:12ch}
 .price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-bottom:6px}
-.price b{font-family:var(--display);font-size:clamp(60px,7vw,76px);font-weight:600;line-height:1;white-space:nowrap}
+.price b{font-family:var(--display);font-size:clamp(52px,5vw,64px);font-weight:600;line-height:1;white-space:nowrap}
 .price span{color:var(--ink);opacity:.75;font-size:15px}
 .specs{font-size:15px;opacity:.8}
 .offer .note{margin:22px 0 30px;max-width:440px}
@@ -175,11 +186,11 @@ nav a:hover{opacity:1;color:var(--sea)}
 .offer-sea-cta{display:none}
 
 /* ---------- FAQ ---------- */
-.faq{padding-block:20px 110px;max-width:860px}
-.faq h2{font-size:clamp(40px,4.4vw,58px);text-align:center;margin-bottom:40px}
+.faq{padding-block:20px 110px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px 80px;align-items:start}
+.faq h2{font-size:var(--fs-h2)}
 .faq details{border-top:1px solid var(--line)}
 .faq details:last-child{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-family:var(--display);font-size:27px;font-weight:600;position:relative}
+.faq summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-size:19px;font-weight:450;position:relative}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"";position:absolute;right:8px;top:50%;width:14px;height:14px;border-right:1.5px solid var(--coral);border-bottom:1.5px solid var(--coral);transform:translateY(-70%) rotate(45deg);transition:transform .3s}
 .faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
@@ -189,7 +200,7 @@ nav a:hover{opacity:1;color:var(--sea)}
 footer{position:relative;overflow:hidden;color:#D3E6E4;padding-block:40px 120px;font-size:15px;background:linear-gradient(180deg,#1C6370 0%,#14525E 45%,#0F4350 100%)}
 footer .foot{position:relative;z-index:3}
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px}
-footer .logo{color:var(--cream);font-size:34px}
+footer .logo{color:var(--cream);font-size:32px}
 footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;align-items:center;gap:14px;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(255,247,236,.95);backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
@@ -206,62 +217,64 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 .sheet-box h3{font-size:34px;margin-bottom:12px}
 .sheet-box p{color:var(--soft);font-size:16px;margin-bottom:22px}
 
-.nw{white-space:nowrap}
-.sea-cta,.dots,.scene::before{display:none}
+.sea-cta,.dots{display:none}
 .btn-light{background:var(--cream);color:var(--sea)}
-.btn-light em{color:var(--coral)}
+.btn-light .bp{border-left-color:rgba(19,80,95,.25)}
 .js .reveal{transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
 .js .reveal.wait{opacity:0;transform:translateY(34px)}
 
 /* Notebook a tablet: úvod pod sebou (text, tlačítko, kniha na slunci). */
 @media (max-width:1199px){
-  .hero{--sea-h:290px;--sun:min(400px,86vw);padding-top:104px}
-  .hero h1{font-size:clamp(44px,14.5vw,128px);line-height:.95}
-  .scene{grid-template-columns:1fr;justify-items:center;gap:0;margin-top:18px}
-  .scene .lead{order:-2;text-align:center;justify-self:center;padding:0 0 22px;font-size:clamp(21px,3vw,26px);max-width:520px}
-  .buybox{order:-1;padding:0 0 36px;text-align:center;justify-self:center}
+  .hero{--sea-h:290px;padding-top:110px}
+  .scene{--sun:min(400px,86vw)}
   .sea{margin-top:-62px}
+  .scene::before{bottom:62px}
   .story{--gap:48px}
   .day-intro{padding-block:100px 30px}
+}
+/* Nízké notebooky: úvod se stáhne, aby byl horizont vidět hned */
+@media (min-width:700px) and (max-height:860px){
+  .hero{padding-top:96px}
+  .byline{margin-bottom:6px}
+  .hero .lead{margin-top:14px}
+  .buybox{margin-top:20px}
+  .hero-copy{padding-bottom:22px}
 }
 /* Tablet na výšku a menší: navigace pryč, sekce pod sebou. */
 @media (max-width:960px){
   nav{display:none}
-  .author{grid-template-columns:1fr;gap:64px;justify-items:center;text-align:center}
-  .author p{margin-inline:auto}
+  .author{grid-template-columns:1fr;gap:56px}
   .portrait{width:min(320px,76vw)}
-  .offer-grid{grid-template-columns:1fr;justify-items:center;text-align:center;gap:10px;padding-top:96px}
+  .offer-grid{grid-template-columns:1fr;gap:10px;padding-top:96px}
   .offer-copy{padding-bottom:34px}
-  .offer .price{justify-content:center}
-  .offer .note{margin-inline:auto}
+  .offer-scene{justify-self:center}
+  .faq{grid-template-columns:1fr;gap:24px}
   .dock{display:flex}
 }
 /* ===== Telefon: vlastní rozvržení ===== */
 @media (max-width:699px){
   body{font-size:17px}
   .head{height:64px}
-  .logo{font-size:22px}
+  .logo{font-size:23px}
   .head .btn{padding:9px 16px;font-size:14px}
-  .head .btn em{display:none}
+  .head .btn .bp{display:none}
 
   /* Úvod jako jeden celý obraz: titul, kniha na horizontu, tlačítko na moři */
-  .hero{--sun:min(320px,82vw);padding-top:74px}
-  .sun{display:none}
-  .hero .tag{font-size:19px;margin-bottom:8px}
-  .hero h1{font-size:clamp(54px,19vw,86px);line-height:.92}
-  .hero h1 .nw{display:block}
-  .scene{margin-top:14px}
-  .scene .lead{font-size:19px;line-height:1.35;padding-bottom:20px;max-width:310px}
+  .hero{padding-top:92px}
+  .byline{font-size:15px;margin-bottom:10px}
+  .hero h1{font-size:min(15.2vw,76px)}
+  .hero .lead{margin-top:16px;font-size:18px;max-width:300px}
+  .hero-copy{padding-bottom:26px}
   .buybox{display:none}
   .book{width:min(44vw,188px)}
-  .scene::before{content:"";display:block;position:absolute;left:50%;bottom:56px;width:var(--sun);height:calc(var(--sun) * .62);translate:-50% 0;z-index:-1;--r:calc(var(--sun) / 2);
-    background:radial-gradient(circle var(--r) at 50% var(--r),#FFE6A6 0,var(--gold) calc(var(--r) * .45),var(--coral) calc(var(--r) - 1px),transparent var(--r));transform-origin:50% 100%;animation:sunM 2s cubic-bezier(.2,.8,.2,1) both}
+  .scene{--sun:min(320px,82vw)}
+  .scene::before{bottom:56px}
   .sea{height:auto;margin-top:-56px;padding:82px 20px 62px}
   .shore{height:40px}
   .shore.foam{height:46px}
   .sea-cta{display:block;position:relative;z-index:3;text-align:center}
   .sea-cta .btn{width:100%;max-width:360px;padding-block:17px}
-  .trust{position:relative;padding:16px 0 0;gap:4px 14px;font-size:13.5px;letter-spacing:.02em}
+  .trust{position:relative;justify-content:center;padding:16px 0 0;gap:4px 14px;font-size:13.5px;letter-spacing:.02em}
   .trust span+span::before{margin-right:4px}
   .trust span:first-child{display:none}
   .trust span:nth-child(2)::before{display:none}
@@ -269,7 +282,6 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   /* Italský den: karty, které se posouvají do strany */
   .day{padding-bottom:0}
   .day-intro{padding-block:64px 22px}
-  .day-intro h2{font-size:40px}
   .day-intro p{font-size:16.5px}
   .story{display:block;padding-inline:0}
   .frame{display:none}
@@ -279,22 +291,20 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   .step>:not(img){padding-inline:4px}
   .step img{display:block;width:100%;max-width:none;aspect-ratio:1/1;object-fit:cover;border-radius:160px 160px 14px 14px;margin-bottom:16px;box-shadow:0 24px 40px -28px rgba(19,60,70,.55)}
   .step time{font-size:50px}
-  .step h3{font-size:27px;margin:2px 0 8px}
+  .step h3{margin:6px 0 8px}
   .step p{font-size:16px;line-height:1.6}
-  .step .ch{font-size:17px;margin-top:10px}
   .dots{display:flex;justify-content:center;gap:10px;padding:6px 0 56px}
   .dots button{width:8px;height:8px;padding:0;border:0;border-radius:4px;background:var(--ink);opacity:.22;transition:width .3s,opacity .3s;cursor:pointer}
   .dots button.on{width:24px;opacity:.75}
 
   /* Obsah: prvních šest položek, zbytek na klepnutí */
-  .ov-line{padding:6px 20px 66px}
+  .ov-line{display:block;padding:6px 20px 66px}
   .toc-panel{align-items:flex-end}
   .toc-sheet{height:86vh;width:100%;border-radius:22px 22px 0 0;padding:52px 22px calc(30px + env(safe-area-inset-bottom,0px));animation-name:sheetUp}
   .toc-sheet ol{font-size:18px}
 
   .quote{padding-block:120px}
-  .quote blockquote{font-size:31px}
-  .quote cite{font-size:19px}
+  .quote blockquote{font-size:29px}
 
   /* Autorka: malý oblouk se sluncem vedle jména */
   .author{grid-template-columns:92px 1fr;gap:0 18px;align-items:center;justify-items:start;text-align:left;padding-block:72px 64px}
@@ -302,15 +312,14 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   .portrait{width:92px}
   .portrait::before{top:-14px}
   .portrait img{border-radius:60px 60px 8px 8px;box-shadow:0 14px 24px -16px rgba(19,60,70,.6)}
-  .author h2{font-size:38px;margin:0}
+  .author h2{margin:0}
   .author .big,.author p,.author .link{grid-column:1/-1}
-  .author .big{margin:24px 0 16px;font-size:23px}
+  .author .big{margin:22px 0 14px}
   .author .link{justify-self:start}
 
   /* Nákup: text, kniha na horizontu, tlačítko na moři (jako úvod) */
   .offer-grid{padding-top:64px}
-  .offer h2{font-size:34px;margin-bottom:14px}
-  .offer .price b{font-size:52px}
+  .offer h2{margin-bottom:14px}
   .offer .note{font-size:16px;margin:16px auto 4px}
   .offer-copy{padding-bottom:24px}
   .offer-copy .btn,.offer-copy .pay{display:none}
@@ -323,22 +332,22 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   .offer-sea-cta .pay{color:#E3F1F1;opacity:1;margin-top:14px;font-size:13.5px}
 
   .faq{padding-block:8px 64px}
-  .faq h2{font-size:36px;margin-bottom:24px}
-  .faq summary{font-size:22px;padding-block:18px}
+  .faq summary{font-size:18px;padding-block:18px}
   footer{padding-block:24px 110px}
 }
 @keyframes sunM{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
 @media (max-width:360px){
-  .hero h1{font-size:52px}
+  .hero h1{font-size:15.2vw}
   .step{flex-basis:88%}
 }
 /* Telefon na šířku: kompaktní úvod, aby bylo tlačítko vidět hned. */
 @media (max-height:520px) and (orientation:landscape){
   .hero{padding-top:80px}
-  .hero .tag{display:none}
-  .hero h1{font-size:64px}
-  .scene .lead{padding-bottom:14px;font-size:20px}
-  .buybox{padding-bottom:26px}
+  .byline{display:none}
+  .hero h1{font-size:60px;max-width:none}
+  .hero .lead{margin-top:10px}
+  .hero-copy{padding-bottom:24px}
+  .buybox{margin-top:18px}
   .frame{top:8vh;--fh:84vh}
   .step{min-height:84vh}
 }
@@ -354,26 +363,27 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   <div class="wrap head">
     <a class="logo" href="#">Žít po italsku</a>
     <nav aria-label="Navigace"><a href="#den">Italský den</a><a href="#obsah" data-toc>Obsah</a><a href="#autorka">Autorka</a><a href="#otazky">Otázky</a></nav>
-    <a class="btn" href="#objednat" data-buy>Koupit <em data-price></em></a>
+    <a class="btn" href="#objednat" data-buy>Koupit <span class="bp" data-price></span></a>
   </div>
 </header>
 
 <main>
 <section class="hero" aria-labelledby="titul">
-  <div class="sun" aria-hidden="true"></div>
-  <div class="wrap">
-    <p class="label tag" style="position:relative;z-index:2">nová kniha Lindy Valešové</p>
-    <h1 id="titul"><span class="w">Žít</span> <span class="nw"><span class="w"><em>po</em></span> <span class="w"><em>italsku</em></span></span></h1>
-    <div class="scene">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="byline">Linda Valešová</p>
+      <h1 id="titul">Žít po italsku</h1>
       <p class="lead">Umění zpomalit, cítit a&nbsp;opravdu žít. I&nbsp;tam, kde zrovna jste.</p>
-      <div class="book"><img src="../assets/obalka.webp" width="512" height="800" alt="Obálka knihy Žít po italsku: slunné pobřeží, olivovníky a rozkvetlá louka" fetchpriority="high"><img class="refl" src="../assets/obalka.webp" width="512" height="800" alt="" aria-hidden="true"></div>
       <div class="buybox">
-        <a class="btn" href="#objednat" data-buy>Objednat knihu <em data-price></em></a>
-        <p>Odesíláme do 2 pracovních dnů.</p>
+        <a class="btn" href="#objednat" data-buy>Objednat knihu <span class="bp" data-price></span></a>
+        <p>Odesíláme do 2 pracovních dnů</p>
       </div>
     </div>
+    <div class="scene">
+      <div class="book"><img src="../assets/obalka.webp" width="512" height="800" alt="Obálka knihy Žít po italsku: slunné pobřeží, olivovníky a rozkvetlá louka" fetchpriority="high"><img class="refl" src="../assets/obalka.webp" width="512" height="800" alt="" aria-hidden="true"></div>
+    </div>
   </div>
-  <div class="sea"><canvas aria-hidden="true"></canvas><div class="sea-cta"><a class="btn btn-light" href="#objednat" data-buy>Objednat knihu <em data-price></em></a></div><p class="trust"><span>Karta, Apple Pay, Google Pay</span><span>Doručení po celé ČR</span><span>14 dní na vrácení</span></p><svg class="shore foam" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26Q180 8 360 26T720 26T1080 26T1440 26T1800 26T2160 26T2520 26T2880 26V60H0z" fill="currentColor"/></svg><svg class="shore sand" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34Q240 18 480 34T960 34T1440 34T1920 34T2400 34T2880 34V60H0z" fill="currentColor"/></svg></div>
+  <div class="sea"><canvas aria-hidden="true"></canvas><div class="sea-cta"><a class="btn btn-light" href="#objednat" data-buy>Objednat knihu <span class="bp" data-price></span></a></div><p class="trust"><span>Karta, Apple Pay, Google Pay</span><span>Doručení po celé ČR</span><span>14 dní na vrácení</span></p><svg class="shore foam" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26Q180 8 360 26T720 26T1080 26T1440 26T1800 26T2160 26T2520 26T2880 26V60H0z" fill="currentColor"/></svg><svg class="shore sand" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34Q240 18 480 34T960 34T1440 34T1920 34T2400 34T2880 34V60H0z" fill="currentColor"/></svg></div>
 </section>
 
 <section class="day" id="den" aria-labelledby="jeden-den">
@@ -391,23 +401,23 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
       <article class="step on" data-step="0" data-time="8:00" data-tone="#FFF1D8">
         <img src="../assets/ranni-kava.webp" width="640" height="800" loading="lazy" alt="Ilustrace ženy s kávou u stolku pod citroníkem">
         <time>8:00</time>
+        <p class="when">kapitola 2</p>
         <h3>Ráno, které určuje den</h3>
         <p>Otevřít okno. Vypít kávu vsedě a&nbsp;bez telefonu. Nechat první minuty dne patřit jen vám, než si je vezme svět.</p>
-        <p class="ch">z&nbsp;kapitoly Ráno, které určuje den</p>
       </article>
       <article class="step" data-step="1" data-time="13:00" data-tone="#E6F1EC">
         <img src="../assets/u-stolu.webp" width="640" height="800" loading="lazy" alt="Ilustrace společného oběda na terase nad mořem">
         <time>13:00</time>
+        <p class="when">kapitola 3</p>
         <h3>Oběd, který nikam nespěchá</h3>
         <p>Sednout si ke stolu. Ochutnat. Být spolu. Italové vědí, že jídlo není pauza mezi prací, ale to, kvůli čemu se pracuje.</p>
-        <p class="ch">z&nbsp;kapitoly Jídlo jako rituál, ne jako povinnost</p>
       </article>
       <article class="step" data-step="2" data-time="19:30" data-tone="#FBDCC6">
         <img src="../assets/chvile-pro-sebe.webp" width="640" height="800" loading="lazy" alt="Ilustrace ženy s knihou na lehátku při západu slunce">
         <time>19:30</time>
+        <p class="when">kapitola 8</p>
         <h3>Il dolce far niente</h3>
         <p>Sladké nicnedělání. Chvíle, kdy nic nemusíte, a&nbsp;přesto je to ten nejlepší čas dne. Bez výčitek, bez seznamu úkolů.</p>
-        <p class="ch">z&nbsp;kapitoly Il dolce far niente</p>
       </article>
     </div>
     <div class="dots"><button type="button" class="on" aria-label="Ráno, 8:00"></button><button type="button" aria-label="Oběd, 13:00"></button><button type="button" aria-label="Večer, 19:30"></button></div>
@@ -456,7 +466,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
       <div class="price"><b data-price></b><span>včetně DPH</span></div>
       <p class="specs">Brožovaná · 160 stran · 135&nbsp;×&nbsp;210&nbsp;mm</p>
       <p class="note">Odešleme ji do dvou pracovních dnů, takže stihne i&nbsp;Vánoce. Kdyby vám nesedla, do čtrnácti dnů ji můžete vrátit.</p>
-      <a class="btn" href="#" data-buy>Objednat knihu <em data-price></em></a>
+      <a class="btn" href="#" data-buy>Objednat knihu <span class="bp" data-price></span></a>
       <p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p>
     </div>
     <div class="offer-scene">
@@ -465,7 +475,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   </div>
   <div class="offer-sea">
     <canvas aria-hidden="true"></canvas>
-    <div class="offer-sea-cta"><a class="btn btn-light" href="#" data-buy>Objednat knihu <em data-price></em></a><p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p></div>
+    <div class="offer-sea-cta"><a class="btn btn-light" href="#" data-buy>Objednat knihu <span class="bp" data-price></span></a><p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p></div>
   </div>
 </section>
 
@@ -605,7 +615,8 @@ function makeSea(canvas, { center = () => .5, scattered = false } = {}) {
   addEventListener('resize', () => { setup(); draw(1.3); });
   if (!calm) new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) requestAnimationFrame(loop); }).observe(canvas);
 }
-makeSea(document.querySelector('.sea canvas'));
+const heroCanvas = document.querySelector('.sea canvas'), heroBook = document.querySelector('.hero .book');
+makeSea(heroCanvas, { center: () => { const b = heroBook.getBoundingClientRect(), c = heroCanvas.getBoundingClientRect(); return (b.left + b.width / 2 - c.left) / c.width; } });
 makeSea(document.querySelector('.quote canvas'), { scattered: true });
 const offerCanvas = document.querySelector('.offer-sea canvas'), offerBook = document.querySelector('.offer .book');
 makeSea(offerCanvas, { center: () => { const b = offerBook.getBoundingClientRect(), c = offerCanvas.getBoundingClientRect(); return (b.left + b.width / 2 - c.left) / c.width; } });
