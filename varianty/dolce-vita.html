@@ -172,6 +172,7 @@ nav a:hover{opacity:1;color:var(--sea)}
 .offer-sea{position:relative;height:230px;margin-top:-72px;z-index:1;overflow:hidden;background:linear-gradient(180deg,#86C0B6 0%,#4C9A9C 18%,#2A7680 55%,#1C6370 100%)}
 .offer-sea canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
 .offer-sea::before{content:"";position:absolute;inset:0 0 auto;height:28px;background:linear-gradient(180deg,rgba(252,224,180,.6),transparent);z-index:2}
+.offer-sea::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:110px;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(28,99,112,0),rgba(28,99,112,.85) 70%,#1C6370)}
 .offer-sea-cta{display:none}
 
 /* ---------- FAQ ---------- */
@@ -191,6 +192,8 @@ footer .foot{position:relative;z-index:3}
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px}
 footer .logo{color:var(--cream);font-size:34px}
 footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
+footer nav a{text-decoration:none}
+footer nav a:hover{color:var(--cream)}
 
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;align-items:center;gap:14px;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(255,247,236,.95);backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
 .dock.show{transform:none}
@@ -226,7 +229,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 }
 /* Tablet na výšku a menší: navigace pryč, sekce pod sebou. */
 @media (max-width:960px){
-  nav{display:none}
+  header nav{display:none}
   .author{grid-template-columns:1fr;gap:64px;justify-items:center;text-align:center}
   .author p{margin-inline:auto}
   .portrait{width:min(320px,76vw)}
