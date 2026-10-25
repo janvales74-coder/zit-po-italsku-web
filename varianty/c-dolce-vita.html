@@ -36,13 +36,11 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1;margin:0;text-wrap:balance}
 p{margin:0}
 .wrap{width:min(1200px,100%);margin-inline:auto;padding-left:var(--gutter);padding-right:max(20px,env(safe-area-inset-right,0px))}
-.label{font-size:12.5px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--coral)}
+.label{font-family:var(--display);font-style:italic;font-size:24px;font-weight:500;color:var(--coral)}
 :focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-radius:4px}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:16px;background:var(--sea);color:var(--cream);text-decoration:none;font-family:var(--body);font-weight:450;font-size:17px;letter-spacing:.03em;padding:18px 32px;border-radius:4px;border:0;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
-.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(236,178,76,.45) 50%,transparent 65%);transform:translateX(-120%);transition:transform .9s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(19,80,95,.8)}
-.btn:hover::after{transform:translateX(120%)}
 .btn em{font-family:var(--display);font-size:22px;font-weight:600;color:var(--gold);font-style:italic}
 .link{text-decoration:none;border-bottom:1px solid var(--coral);padding-bottom:2px;transition:color .2s}
 .link:hover{color:var(--coral)}
@@ -87,7 +85,7 @@ nav a:hover{opacity:1;color:var(--sea)}
 .trust span+span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);margin-right:18px}
 
 /* ---------- Jeden italský den ---------- */
-.day{background:var(--day);transition:background-color 1.2s ease}
+.day{background:var(--day);transition:background-color 1.2s ease;padding-bottom:110px}
 .day-intro{text-align:center;padding-block:120px 40px}
 .day-intro h2{font-size:clamp(46px,6vw,84px);margin-top:16px}
 .day-intro h2 em{color:var(--coral)}
@@ -96,32 +94,40 @@ nav a:hover{opacity:1;color:var(--sea)}
 .frame{position:sticky;top:12vh;height:76vh;border-radius:300px 300px 12px 12px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(19,60,70,.6);background:var(--peach)}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1.1s ease,transform 6s ease}
 .frame img.on{opacity:1;transform:scale(1)}
-.frame .clock{position:absolute;left:20px;bottom:20px;background:rgba(255,247,236,.9);backdrop-filter:blur(6px);padding:8px 16px;border-radius:999px;font-family:var(--display);font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--sea)}
-.steps{padding-block:6vh 18vh}
+.steps{padding-block:6vh 12vh}
 .step{min-height:76vh;display:flex;flex-direction:column;justify-content:center;opacity:.28;transition:opacity .6s}
 .step.on{opacity:1}
 .step time{font-family:var(--display);font-style:italic;font-size:clamp(70px,8vw,120px);font-weight:500;line-height:1;color:var(--coral);font-variant-numeric:tabular-nums}
 .step h3{font-size:clamp(34px,3.4vw,46px);margin:10px 0 18px}
 .step p{color:var(--soft);max-width:440px}
-.step .ch{margin-top:18px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--sea-2)}
+.step .ch{margin-top:16px;font-family:var(--display);font-style:italic;font-size:20px;color:var(--sea-2)}
 .step img{display:none}
 
 /* ---------- Obsah knihy ---------- */
-.toc{padding-block:120px;display:grid;grid-template-columns:.8fr 1.2fr;gap:80px}
-.toc h2{font-size:clamp(44px,5vw,70px);margin-top:16px}
-.toc .facts{display:flex;gap:40px;margin-top:36px}
-.toc .facts b{display:block;font-family:var(--display);font-size:64px;font-weight:500;line-height:1;color:var(--sea)}
-.toc .facts span{font-size:14px;color:var(--soft)}
-.toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:50px;counter-reset:ch}
-.toc li{counter-increment:ch;display:grid;grid-template-columns:44px 1fr;padding:12px 0;border-bottom:1px solid var(--line);break-inside:avoid;font-size:16.5px;line-height:1.45}
-.toc li::before{content:counter(ch,decimal-leading-zero);font-family:var(--display);font-style:italic;font-size:22px;font-weight:600;color:var(--coral);line-height:1.1}
-.toc .extra{margin-top:26px;color:var(--soft);font-size:16px}
-
+/* Obsah jako rozevřená kniha ve skutečném formátu 135 × 210 mm. */
+.contents{padding-block:120px 130px}
+.contents-head{max-width:620px;margin:0 auto 56px;text-align:center}
+.contents-head h2{font-size:clamp(42px,4.6vw,62px)}
+.contents-head p{margin-top:16px;color:var(--soft)}
+.spread{display:grid;grid-template-columns:1fr 1fr;max-width:1000px;margin-inline:auto;perspective:2200px;filter:drop-shadow(0 34px 40px rgba(60,40,20,.22))}
+.page{aspect-ratio:135/210;background:#FFFCF4;padding:clamp(34px,5vw,64px) clamp(28px,4.4vw,58px);position:relative;min-width:0}
+.page.left{border-radius:6px 0 0 6px;background:linear-gradient(90deg,#FFFCF4 0%,#FFFCF4 86%,#EFE6D6 100%);display:flex;flex-direction:column;justify-content:center;text-align:center}
+.page.right{border-radius:0 6px 6px 0;background:linear-gradient(90deg,#E9DFCD 0%,#FFFCF4 12%);transform-origin:left center;transition:transform 1.4s cubic-bezier(.3,.7,.2,1)}
+.spread.closed .page.right{transform:rotateY(-100deg)}
+.epigraph{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(22px,2.3vw,30px);line-height:1.35;color:var(--ink);max-width:330px;margin:0 auto}
+.epigraph-src{margin-top:22px;font-family:var(--display);font-size:17px;color:var(--soft)}
+.page h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:30px;text-align:center;margin-bottom:clamp(14px,2vw,26px)}
+.page ol{list-style:none;margin:0;padding:0;font-family:var(--display);font-size:clamp(15px,1.55vw,19px);line-height:1.25;font-weight:500}
+.page li{display:grid;grid-template-columns:2.6em 1fr;gap:.5em;padding:.32em 0}
+.page li i{font-style:normal;text-align:right;color:var(--coral);font-variant:small-caps;letter-spacing:.04em}
+.page li.extra{font-style:italic;color:var(--soft)}
+.page li.extra:first-child{margin-bottom:.3em}
+.page li.extra.end{margin-top:.3em}
 /* ---------- Citát ---------- */
 .quote{background:var(--sea);color:var(--cream);padding-block:130px;position:relative;overflow:hidden;text-align:center}
 .quote::before{content:"";position:absolute;left:50%;top:-200px;width:600px;height:600px;translate:-50% 0;border-radius:50%;background:radial-gradient(closest-side,rgba(236,178,76,.35),transparent)}
 .quote blockquote{position:relative;margin:0 auto;max-width:960px;font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(36px,5vw,68px);line-height:1.1}
-.quote cite{position:relative;display:block;margin-top:34px;font-style:normal;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.quote cite{position:relative;display:block;margin-top:30px;font-family:var(--display);font-style:normal;font-size:22px;color:var(--gold)}
 
 /* ---------- Autorka ---------- */
 .author{padding-block:120px;display:grid;grid-template-columns:auto 1fr;gap:90px;align-items:center}
@@ -144,9 +150,7 @@ nav a:hover{opacity:1;color:var(--sea)}
 .price b{font-family:var(--display);font-size:76px;font-weight:600;line-height:1}
 .price span{color:var(--ink);opacity:.75;font-size:15px}
 .specs{font-size:15px;opacity:.8}
-.ticks{list-style:none;margin:24px 0 32px;padding:0;display:grid;gap:8px}
-.ticks li{display:flex;gap:12px;align-items:baseline}
-.ticks li::before{content:"";width:18px;height:1px;background:var(--sea);flex:none;translate:0 -4px}
+.offer .note{margin:22px 0 30px;max-width:420px}
 .pay{margin-top:18px;font-size:14px;opacity:.8}
 .offer .book{justify-self:center;width:min(290px,70vw);animation:none;transform:rotate(-3deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .offer .book:hover{transform:rotate(0) translateY(-8px)}
@@ -197,10 +201,14 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   .story{grid-template-columns:1fr;gap:0}
   .frame{display:none}
   .steps{padding-block:0 60px}
+  .day{padding-bottom:10px}
   .step{min-height:auto;opacity:1;padding-block:30px 50px}
   .step img{display:block;border-radius:200px 200px 10px 10px;aspect-ratio:4/4.4;object-fit:cover;margin-bottom:24px}
-  .toc,.author{grid-template-columns:1fr;gap:50px}
-  .toc ol{columns:1}
+  .author{grid-template-columns:1fr;gap:50px}
+  .spread{grid-template-columns:1fr;max-width:460px}
+  .page.left{display:none}
+  .page.right{aspect-ratio:auto;border-radius:6px;background:#FFFCF4;padding:40px 22px}
+  .page ol{font-size:17px}
   .portrait{width:min(300px,76vw);justify-self:center}
   .offer-card{grid-template-columns:1fr;padding:50px 26px;gap:30px}
   .offer .book{order:-1;width:200px}
@@ -211,9 +219,8 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   .logo{font-size:23px}
   .head .btn em{display:none}
   .buybox .btn{width:100%}
-  .day-intro,.toc,.author{padding-block:80px}
+  .day-intro,.contents,.author{padding-block:80px}
   .quote{padding-block:90px}
-  .toc .facts b{font-size:52px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -226,7 +233,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 <header>
   <div class="wrap head">
     <a class="logo" href="#">Žít po italsku</a>
-    <nav aria-label="Navigace"><a href="#den">Jeden den</a><a href="#obsah">Obsah</a><a href="#autorka">Autorka</a><a href="#otazky">Otázky</a></nav>
+    <nav aria-label="Navigace"><a href="#den">Italský den</a><a href="#obsah">Obsah</a><a href="#autorka">Autorka</a><a href="#otazky">Otázky</a></nav>
     <a class="btn" href="#objednat" data-buy>Koupit <em data-price></em></a>
   </div>
 </header>
@@ -235,7 +242,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 <section class="hero" aria-labelledby="titul">
   <div class="sun" aria-hidden="true"></div>
   <div class="wrap">
-    <p class="label tag" style="position:relative;z-index:2">Nová kniha Lindy Valešové</p>
+    <p class="label tag" style="position:relative;z-index:2">nová kniha Lindy Valešové</p>
     <h1 id="titul"><span class="w">Žít</span> <span class="w"><em>po</em></span> <span class="w"><em>italsku</em></span></h1>
     <div class="scene">
       <p class="lead">Umění zpomalit, cítit a&nbsp;opravdu žít. I&nbsp;tam, kde zrovna jste.</p>
@@ -251,8 +258,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 
 <section class="day" id="den" aria-labelledby="jeden-den">
   <div class="wrap day-intro reveal">
-    <p class="label">O&nbsp;knize</p>
-    <h2 id="jeden-den">Jeden italský den. <em>Kdekoli.</em></h2>
+    <h2 id="jeden-den">Italský den, kdekoli jste</h2>
     <p>Kniha nevede na dovolenou. Vede do vašeho obyčejného úterý a&nbsp;ukazuje, jak ho prožít pomaleji, chutněji a&nbsp;víc po svém.</p>
   </div>
   <div class="wrap story">
@@ -260,7 +266,6 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
       <img class="on" src="../assets/ranni-kava.webp" width="640" height="800" alt="">
       <img src="../assets/u-stolu.webp" width="640" height="800" alt="" loading="lazy">
       <img src="../assets/chvile-pro-sebe.webp" width="640" height="800" alt="" loading="lazy">
-      <span class="clock" id="clock">8:00</span>
     </div>
     <div class="steps">
       <article class="step on" data-step="0" data-time="8:00" data-tone="#FFF1D8">
@@ -268,37 +273,60 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
         <time>8:00</time>
         <h3>Ráno, které určuje den</h3>
         <p>Otevřít okno. Vypít kávu vsedě a&nbsp;bez telefonu. Nechat první minuty dne patřit jen vám, než si je vezme svět.</p>
-        <p class="ch">Kapitola 2</p>
+        <p class="ch">z&nbsp;kapitoly Ráno, které určuje den</p>
       </article>
       <article class="step" data-step="1" data-time="13:00" data-tone="#E6F1EC">
         <img src="../assets/u-stolu.webp" width="640" height="800" loading="lazy" alt="Ilustrace společného oběda na terase nad mořem">
         <time>13:00</time>
         <h3>Oběd, který nikam nespěchá</h3>
         <p>Sednout si ke stolu. Ochutnat. Být spolu. Italové vědí, že jídlo není pauza mezi prací, ale to, kvůli čemu se pracuje.</p>
-        <p class="ch">Kapitola 3</p>
+        <p class="ch">z&nbsp;kapitoly Jídlo jako rituál, ne jako povinnost</p>
       </article>
       <article class="step" data-step="2" data-time="19:30" data-tone="#FBDCC6">
         <img src="../assets/chvile-pro-sebe.webp" width="640" height="800" loading="lazy" alt="Ilustrace ženy s knihou na lehátku při západu slunce">
         <time>19:30</time>
         <h3>Il dolce far niente</h3>
         <p>Sladké nicnedělání. Chvíle, kdy nic nemusíte, a&nbsp;přesto je to ten nejlepší čas dne. Bez výčitek, bez seznamu úkolů.</p>
-        <p class="ch">Kapitola 8</p>
+        <p class="ch">z&nbsp;kapitoly Il dolce far niente</p>
       </article>
     </div>
   </div>
 </section>
 
-<section class="wrap toc" id="obsah" aria-labelledby="co-uvnitr">
-  <div class="reveal">
-    <p class="label">Obsah</p>
-    <h2 id="co-uvnitr">Trochu Itálie. O&nbsp;něco víc vás.</h2>
-    <div class="facts"><div><b>16</b><span>kapitol</span></div><div><b>30</b><span>malých rozhodnutí</span></div><div><b>160</b><span>stran</span></div></div>
+<section class="wrap contents" id="obsah" aria-labelledby="co-uvnitr">
+  <div class="contents-head reveal">
+    <h2 id="co-uvnitr">Nahlédněte do obsahu</h2>
+    <p>Šestnáct kapitol o&nbsp;obyčejném životě, který stojí za pozornost. Číst je můžete popořadě, nebo tu, kterou zrovna potřebujete.</p>
   </div>
-  <div class="reveal">
-    <ol>
-      <li>Itálie není země. Je to tempo.</li><li>Ráno, které určuje den</li><li>Jídlo jako rituál, ne jako povinnost</li><li>Styl jako energie</li><li>Komunikace, která nikam nespěchá</li><li>Práce bez permanentního napětí</li><li>Volný čas bez pocitu viny</li><li>Il dolce far niente</li><li>Italská dlouhověkost: co za ní skutečně je</li><li>Nedokonalost, která nechá člověka dýchat</li><li>Radost jako způsob života</li><li>Italové a&nbsp;rodina</li><li>Jak Itálie změnila moje vztahy</li><li>Samota, která není prázdná</li><li>Kde je domov, když se člověk změní</li><li>Jak si vytvořit vlastní italský svět odkudkoli</li>
-    </ol>
-    <p class="extra">Na konci čeká 30 malých rozhodnutí pro pomalejší život. Můžete začít hned zítra ráno.</p>
+  <div class="spread closed" id="spread">
+    <div class="page left" aria-hidden="true">
+      <p class="epigraph">Život nezačne, až budete mít víc času. Začne ve chvíli, kdy mu ten čas dáte.</p>
+      <p class="epigraph-src">Linda Valešová</p>
+    </div>
+    <div class="page right">
+      <h3>Obsah</h3>
+      <ol>
+          <li class="extra"><i></i><span>Úvod</span></li>
+          <li><i>i.</i><span>Itálie není země. Je to tempo.</span></li>
+          <li><i>ii.</i><span>Ráno, které určuje den</span></li>
+          <li><i>iii.</i><span>Jídlo jako rituál, ne jako povinnost</span></li>
+          <li><i>iv.</i><span>Styl jako energie</span></li>
+          <li><i>v.</i><span>Komunikace, která nikam nespěchá</span></li>
+          <li><i>vi.</i><span>Práce bez permanentního napětí</span></li>
+          <li><i>vii.</i><span>Volný čas bez pocitu viny</span></li>
+          <li><i>viii.</i><span>Il dolce far niente</span></li>
+          <li><i>ix.</i><span>Italská dlouhověkost: co za ní skutečně je</span></li>
+          <li><i>x.</i><span>Nedokonalost, která nechá člověka dýchat</span></li>
+          <li><i>xi.</i><span>Radost jako způsob života</span></li>
+          <li><i>xii.</i><span>Italové a&nbsp;rodina</span></li>
+          <li><i>xiii.</i><span>Jak Itálie změnila moje vztahy</span></li>
+          <li><i>xiv.</i><span>Samota, která není prázdná</span></li>
+          <li><i>xv.</i><span>Kde je domov, když se člověk změní</span></li>
+          <li><i>xvi.</i><span>Jak si vytvořit vlastní italský svět odkudkoli</span></li>
+          <li class="extra end"><i></i><span>Závěr: Nečekejte na život</span></li>
+          <li class="extra"><i></i><span>30 malých rozhodnutí pro pomalejší život</span></li>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -312,7 +340,6 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 <section class="wrap author" id="autorka" aria-labelledby="linda">
   <div class="portrait reveal"><img src="../assets/italska-ulicka.webp" width="800" height="1000" loading="lazy" alt="Ilustrace ženy v italské uličce s výhledem na moře"></div>
   <div class="reveal">
-    <p class="label">Autorka</p>
     <h2 id="linda">Linda Valešová</h2>
     <p class="big">Itálie pro ni začala jako láska. Stala se cestou zpátky k&nbsp;sobě.</p>
     <p>Italštině a&nbsp;italské kultuře se věnuje přes třináct let. Našla v&nbsp;nich víc než krásná místa a&nbsp;nový jazyk: jiný pohled na čas, vztahy, práci i&nbsp;radost z&nbsp;obyčejných dní.</p>
@@ -324,15 +351,10 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 <section class="wrap offer" id="objednat" aria-labelledby="koupit">
   <div class="offer-card reveal">
     <div>
-      <p class="label" style="color:var(--sea)">Pro vás nebo jako dárek</p>
-      <h2 id="koupit">Italská lehkost začíná <em>první stránkou.</em></h2>
+      <h2 id="koupit">Italská lehkost začíná první stránkou</h2>
       <div class="price"><b data-price></b><span>včetně DPH</span></div>
       <p class="specs">Brožovaná · 160 stran · 135 × 210 mm</p>
-      <ul class="ticks">
-        <li>Odesíláme do 2 pracovních dnů</li>
-        <li>Krásný dárek pod stromeček</li>
-        <li>14 dní na vrácení bez udání důvodu</li>
-      </ul>
+      <p class="note">Odešleme ji do dvou pracovních dnů, takže stihne i&nbsp;Vánoce. Kdyby vám nesedla, do čtrnácti dnů ji můžete vrátit.</p>
       <a class="btn" href="#" data-buy>Objednat knihu <em data-price></em></a>
       <p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p>
     </div>
@@ -392,7 +414,7 @@ if (!calm && 'IntersectionObserver' in window) {
 }
 /* Jeden den: aktivní je vždy krok nejblíž středu obrazovky. Počítá se při každém scrollu,
    takže nevynechá krok ani při rychlém scrollu nebo uvnitř vloženého rámu. */
-const day = document.querySelector('.day'), frames = [...document.querySelectorAll('.frame img')], clock = document.getElementById('clock');
+const day = document.querySelector('.day'), frames = [...document.querySelectorAll('.frame img')];
 const steps = [...document.querySelectorAll('.step')];
 let current = -1;
 function pickStep() {
@@ -404,7 +426,6 @@ function pickStep() {
   const s = steps[best];
   steps.forEach((x, i) => x.classList.toggle('on', i === best));
   frames.forEach((f, i) => f.classList.toggle('on', i === best));
-  clock.textContent = s.dataset.time;
   day.style.setProperty('--day', s.dataset.tone);
 }
 let ticking = false;
@@ -422,7 +443,7 @@ function setupSea() {
   canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   glints = Array.from({ length: Math.round(W / 5) }, () => {
     const d = Math.random() ** 1.5;
-    return { d, y: 4 + d * (H - 4), x: W / 2 + gauss() * (30 + 300 * d), len: 2 + (4 + 30 * d) * Math.random(), th: .8 + 1.6 * d, sp: .6 + Math.random() * 1.8, ph: Math.random() * 6.28 };
+    return { d, y: 4 + d * (H - 64), x: W / 2 + gauss() * (30 + 300 * d), len: 2 + (4 + 30 * d) * Math.random(), th: .8 + 1.6 * d, sp: .6 + Math.random() * 1.8, ph: Math.random() * 6.28 };
   });
   ripples = Array.from({ length: Math.round(W / 22) }, () => {
     const d = Math.random() ** 1.3;
@@ -451,6 +472,10 @@ function loop(ms) { if (!running) return; drawSea(ms / 1000); requestAnimationFr
 setupSea(); drawSea(1.3);
 addEventListener('resize', () => { setupSea(); drawSea(1.3); });
 if (!calm) new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) requestAnimationFrame(loop); }).observe(canvas);
+
+const spread = document.getElementById('spread');
+const openBook = () => { const r = spread.getBoundingClientRect(); if (calm || r.top < innerHeight * .75) { spread.classList.remove('closed'); removeEventListener('scroll', openBook); } };
+if (spread.getBoundingClientRect().top < innerHeight) spread.classList.remove('closed'); else { addEventListener('scroll', openBook, { passive: true }); }
 
 const dock = document.querySelector('.dock'), hero = document.querySelector('.hero'), offer = document.getElementById('objednat');
 let heroOut = false, offerIn = false;
