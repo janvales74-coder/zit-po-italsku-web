@@ -41,7 +41,7 @@ p{margin:0}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:16px;background:var(--sea);color:var(--cream);text-decoration:none;font-family:var(--body);font-weight:450;font-size:17px;letter-spacing:.03em;padding:18px 32px;border-radius:4px;border:0;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(19,80,95,.8)}
-.btn em{font-family:var(--display);font-size:22px;font-weight:600;color:var(--gold);font-style:italic}
+.btn .bp{padding-left:14px;border-left:1px solid rgba(255,247,236,.35);font-variant-numeric:tabular-nums}
 .link{text-decoration:none;border-bottom:1px solid var(--coral);padding-bottom:2px;transition:color .2s}
 .link:hover{color:var(--coral)}
 
@@ -53,7 +53,7 @@ nav{display:flex;gap:34px;font-size:15px}
 nav a{text-decoration:none;opacity:.85}
 nav a:hover{opacity:1;color:var(--sea)}
 .head .btn{padding:11px 20px;font-size:15px}
-.head .btn em{font-size:18px}
+.head .btn .bp{padding-left:12px}
 
 /* ---------- Hero: slunce nad mořem ---------- */
 .hero{--sea-h:300px;--sun:440px;position:relative;overflow:hidden;background:linear-gradient(180deg,#FFF3DF 0%,#FCE1BE 40%,var(--peach) 66%,#F4B998 82%);padding-top:120px}
@@ -175,11 +175,11 @@ nav a:hover{opacity:1;color:var(--sea)}
 .offer-sea-cta{display:none}
 
 /* ---------- FAQ ---------- */
-.faq{padding-block:20px 110px;max-width:860px}
-.faq h2{font-size:clamp(40px,4.4vw,58px);text-align:center;margin-bottom:40px}
+.faq{padding-block:20px 110px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px 80px;align-items:start}
+.faq h2{font-size:clamp(40px,4.4vw,58px)}
 .faq details{border-top:1px solid var(--line)}
 .faq details:last-child{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-family:var(--display);font-size:27px;font-weight:600;position:relative}
+.faq summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-size:19px;font-weight:450;position:relative}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"";position:absolute;right:8px;top:50%;width:14px;height:14px;border-right:1.5px solid var(--coral);border-bottom:1.5px solid var(--coral);transform:translateY(-70%) rotate(45deg);transition:transform .3s}
 .faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
@@ -209,7 +209,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
 .nw{white-space:nowrap}
 .sea-cta,.dots,.scene::before{display:none}
 .btn-light{background:var(--cream);color:var(--sea)}
-.btn-light em{color:var(--coral)}
+.btn-light .bp{border-left-color:rgba(19,80,95,.25)}
 .js .reveal{transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
 .js .reveal.wait{opacity:0;transform:translateY(34px)}
 
@@ -234,6 +234,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   .offer-copy{padding-bottom:34px}
   .offer .price{justify-content:center}
   .offer .note{margin-inline:auto}
+  .faq{grid-template-columns:1fr;gap:24px}
   .dock{display:flex}
 }
 /* ===== Telefon: vlastní rozvržení ===== */
@@ -242,7 +243,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   .head{height:64px}
   .logo{font-size:22px}
   .head .btn{padding:9px 16px;font-size:14px}
-  .head .btn em{display:none}
+  .head .btn .bp{display:none}
 
   /* Úvod jako jeden celý obraz: titul, kniha na horizontu, tlačítko na moři */
   .hero{--sun:min(320px,82vw);padding-top:74px}
@@ -323,8 +324,8 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   .offer-sea-cta .pay{color:#E3F1F1;opacity:1;margin-top:14px;font-size:13.5px}
 
   .faq{padding-block:8px 64px}
-  .faq h2{font-size:36px;margin-bottom:24px}
-  .faq summary{font-size:22px;padding-block:18px}
+  .faq h2{font-size:36px}
+  .faq summary{font-size:18px;padding-block:18px}
   footer{padding-block:24px 110px}
 }
 @keyframes sunM{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
@@ -354,7 +355,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   <div class="wrap head">
     <a class="logo" href="#">Žít po italsku</a>
     <nav aria-label="Navigace"><a href="#den">Italský den</a><a href="#obsah" data-toc>Obsah</a><a href="#autorka">Autorka</a><a href="#otazky">Otázky</a></nav>
-    <a class="btn" href="#objednat" data-buy>Koupit <em data-price></em></a>
+    <a class="btn" href="#objednat" data-buy>Koupit <span class="bp" data-price></span></a>
   </div>
 </header>
 
@@ -368,12 +369,12 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
       <p class="lead">Umění zpomalit, cítit a&nbsp;opravdu žít. I&nbsp;tam, kde zrovna jste.</p>
       <div class="book"><img src="../assets/obalka.webp" width="512" height="800" alt="Obálka knihy Žít po italsku: slunné pobřeží, olivovníky a rozkvetlá louka" fetchpriority="high"><img class="refl" src="../assets/obalka.webp" width="512" height="800" alt="" aria-hidden="true"></div>
       <div class="buybox">
-        <a class="btn" href="#objednat" data-buy>Objednat knihu <em data-price></em></a>
+        <a class="btn" href="#objednat" data-buy>Objednat knihu <span class="bp" data-price></span></a>
         <p>Odesíláme do 2 pracovních dnů.</p>
       </div>
     </div>
   </div>
-  <div class="sea"><canvas aria-hidden="true"></canvas><div class="sea-cta"><a class="btn btn-light" href="#objednat" data-buy>Objednat knihu <em data-price></em></a></div><p class="trust"><span>Karta, Apple Pay, Google Pay</span><span>Doručení po celé ČR</span><span>14 dní na vrácení</span></p><svg class="shore foam" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26Q180 8 360 26T720 26T1080 26T1440 26T1800 26T2160 26T2520 26T2880 26V60H0z" fill="currentColor"/></svg><svg class="shore sand" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34Q240 18 480 34T960 34T1440 34T1920 34T2400 34T2880 34V60H0z" fill="currentColor"/></svg></div>
+  <div class="sea"><canvas aria-hidden="true"></canvas><div class="sea-cta"><a class="btn btn-light" href="#objednat" data-buy>Objednat knihu <span class="bp" data-price></span></a></div><p class="trust"><span>Karta, Apple Pay, Google Pay</span><span>Doručení po celé ČR</span><span>14 dní na vrácení</span></p><svg class="shore foam" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26Q180 8 360 26T720 26T1080 26T1440 26T1800 26T2160 26T2520 26T2880 26V60H0z" fill="currentColor"/></svg><svg class="shore sand" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34Q240 18 480 34T960 34T1440 34T1920 34T2400 34T2880 34V60H0z" fill="currentColor"/></svg></div>
 </section>
 
 <section class="day" id="den" aria-labelledby="jeden-den">
@@ -456,7 +457,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
       <div class="price"><b data-price></b><span>včetně DPH</span></div>
       <p class="specs">Brožovaná · 160 stran · 135&nbsp;×&nbsp;210&nbsp;mm</p>
       <p class="note">Odešleme ji do dvou pracovních dnů, takže stihne i&nbsp;Vánoce. Kdyby vám nesedla, do čtrnácti dnů ji můžete vrátit.</p>
-      <a class="btn" href="#" data-buy>Objednat knihu <em data-price></em></a>
+      <a class="btn" href="#" data-buy>Objednat knihu <span class="bp" data-price></span></a>
       <p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p>
     </div>
     <div class="offer-scene">
@@ -465,7 +466,7 @@ footer nav{flex-wrap:wrap;gap:10px 26px;font-size:14px}
   </div>
   <div class="offer-sea">
     <canvas aria-hidden="true"></canvas>
-    <div class="offer-sea-cta"><a class="btn btn-light" href="#" data-buy>Objednat knihu <em data-price></em></a><p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p></div>
+    <div class="offer-sea-cta"><a class="btn btn-light" href="#" data-buy>Objednat knihu <span class="bp" data-price></span></a><p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p></div>
   </div>
 </section>
 
