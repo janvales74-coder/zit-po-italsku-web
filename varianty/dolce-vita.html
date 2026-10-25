@@ -125,9 +125,8 @@ nav a:hover{opacity:1;color:var(--sea)}
 /* ---------- Obsah knihy ---------- */
 /* Obsah jako rozevřená kniha ve skutečném formátu 135 × 210 mm. */
 /* Obsah: na stránce jen jedna věta, celý obsah v panelu na vyžádání */
-.ov-line{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--gap,80px);padding-top:40px}
-.ov-line>*{grid-column:2;justify-self:start}
-.ov-sentence{font-size:var(--fs-lead);line-height:1.5;color:var(--ink);max-width:440px}
+.ov-line{text-align:center;padding-top:96px}
+.ov-sentence{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(23px,2.3vw,29px);line-height:1.35;color:var(--ink);max-width:640px;margin:0 auto;text-wrap:balance}
 .toc-link{margin-top:16px;background:none;border:0;padding:4px 2px;font-family:var(--body);font-size:16px;color:var(--ink);border-bottom:1px solid var(--coral);cursor:pointer;transition:color .2s}
 .toc-link:hover{color:var(--coral)}
 .toc-link::after{content:" →";color:var(--coral)}
