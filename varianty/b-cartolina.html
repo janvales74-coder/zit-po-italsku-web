@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Žít po italsku · Cartolina</title>
+<meta name="description" content="Kniha Lindy Valešové o umění zpomalit. Pohlednice z Itálie do vašich obyčejných dní.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Karla:ital,wght@0,300..700;1,300..700&family=Caveat:wght@500..700&display=swap">
+<style>
+/* Varianta B · Cartolina. Pohlednice z léta: slunce rozpálený písek, terakota, citrony, olivy.
+   Layout: papírové objekty (pohlednice, známka, cenovka z trhu) položené na teplém podkladu. */
+:root{
+  --paper:#FBF1E1;      /* papír pohlednice */
+  --sand:#F3DFC0;       /* rozpálený písek */
+  --terra:#B44D27;      /* terakota, tlačítka */
+  --lemon:#F2C641;      /* citron */
+  --olive:#5E6B2E;      /* oliva */
+  --sea:#2B8590;        /* moře, jen akcent */
+  --ink:#3B2618;        /* espresso, text */
+  --soft:#76584A;       /* vedlejší text */
+  --card:#FFFDF8;       /* bílý karton */
+  --line:rgba(59,38,24,.16);
+  --display:'Young Serif',Georgia,'Times New Roman',serif;
+  --body:'Karla','Gill Sans','Trebuchet MS',sans-serif;
+  --hand:'Caveat','Bradley Hand','Segoe Print',cursive;
+  --gutter:max(20px,env(safe-area-inset-left,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .3 0 0 0 0 .15 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.015em}
+p{margin:0}
+.wrap{width:min(1180px,100%);margin-inline:auto;padding-left:var(--gutter);padding-right:max(20px,env(safe-area-inset-right,0px))}
+.hand{font-family:var(--hand);font-weight:600;line-height:1.1}
+.kicker{font-family:var(--hand);font-size:28px;font-weight:600;color:var(--terra);display:inline-block;transform:rotate(-2deg)}
+:focus-visible{outline:3px solid var(--sea);outline-offset:4px;border-radius:4px}
+
+.btn{display:inline-flex;align-items:center;gap:14px;background:var(--terra);color:#FFF6EA;text-decoration:none;font-family:var(--body);font-weight:700;font-size:17px;letter-spacing:.01em;padding:17px 28px;border-radius:14px;border:0;cursor:pointer;box-shadow:0 5px 0 #7E3216;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 #7E3216}
+.btn:active{transform:translateY(5px);box-shadow:0 0 0 #7E3216}
+.btn small{font-family:var(--display);font-size:18px;font-weight:400;opacity:.95}
+.link{font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:var(--lemon);text-decoration-thickness:4px;text-underline-offset:5px;transition:text-decoration-color .2s}
+.link:hover{text-decoration-color:var(--terra)}
+
+/* ---------- Hlavička ---------- */
+header{position:sticky;top:0;z-index:20;background:rgba(251,241,225,.92);backdrop-filter:blur(10px);border-bottom:1px dashed var(--line)}
+.head{display:flex;justify-content:space-between;align-items:center;height:72px;gap:20px}
+.logo{font-family:var(--display);font-size:24px;text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.logo svg{color:var(--lemon);flex:none}
+nav{display:flex;gap:30px;font-size:16px;font-weight:500}
+nav a{text-decoration:none}
+nav a:hover{color:var(--terra)}
+.head .btn{padding:10px 20px;font-size:15px;border-radius:12px;box-shadow:0 3px 0 #7E3216}
+
+/* ---------- Hero ---------- */
+.hero{padding-block:70px 90px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(60px,7.4vw,108px);margin:12px 0 24px}
+.hero h1 span{display:block;color:var(--terra)}
+.hero .sub{font-size:22px;line-height:1.45;max-width:470px}
+.hero .sub b{font-weight:600}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;margin-top:34px}
+.note{margin-top:22px;font-size:15px;color:var(--soft);display:flex;gap:8px;align-items:center}
+.note i{width:8px;height:8px;border-radius:50%;background:var(--olive);flex:none}
+.hero-copy>*{animation:up .8s cubic-bezier(.2,.8,.2,1) both}
+.hero-copy>*:nth-child(2){animation-delay:.08s}.hero-copy>*:nth-child(3){animation-delay:.16s}.hero-copy>*:nth-child(4){animation-delay:.24s}.hero-copy>*:nth-child(5){animation-delay:.32s}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* Pohlednice + známka */
+.desk{position:relative;min-height:560px}
+.postcard{position:absolute;background:var(--card);padding:14px;box-shadow:0 2px 2px rgba(59,38,24,.08),0 24px 40px -18px rgba(59,38,24,.45);border-radius:4px}
+.pc-photo{width:58%;left:0;top:40px;transform:rotate(-6deg);animation:deal1 1.1s .2s cubic-bezier(.2,.8,.2,1) both}
+.pc-photo img{aspect-ratio:4/5;object-fit:cover}
+.pc-photo figcaption{font-family:var(--hand);font-size:24px;padding:10px 4px 0;color:var(--soft)}
+.pc-back{width:62%;right:0;top:150px;transform:rotate(4deg);padding:26px 26px 30px;animation:deal2 1.1s .45s cubic-bezier(.2,.8,.2,1) both;display:grid;grid-template-columns:1fr 92px;gap:18px}
+.pc-back .msg{font-family:var(--hand);font-size:27px;line-height:1.15;color:var(--ink);border-right:1px solid var(--line);padding-right:16px}
+.pc-back .msg span{display:block;margin-top:12px;color:var(--terra)}
+.stamp{width:92px;padding:7px;background:var(--card);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 3.6px,#0000 95%,#000) -5px -5px/10px 10px round;
+          mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 3.6px,#0000 95%,#000) -5px -5px/10px 10px round;filter:drop-shadow(0 1px 1px rgba(0,0,0,.18))}
+.stamp img{border:1px solid var(--line)}
+.postmark{position:absolute;right:22px;top:205px;width:104px;color:rgba(43,133,144,.7);transform:rotate(-14deg);animation:stampIn .5s 1.3s cubic-bezier(.3,1.6,.5,1) both}
+.lines{grid-column:1/-1;display:grid;gap:14px;margin-top:6px}
+.lines i{height:1px;background:var(--line)}
+@keyframes deal1{from{opacity:0;transform:translate(-40px,60px) rotate(-18deg)}to{opacity:1}}
+@keyframes deal2{from{opacity:0;transform:translate(60px,80px) rotate(14deg)}to{opacity:1}}
+@keyframes stampIn{from{opacity:0;transform:scale(1.8) rotate(-30deg)}to{opacity:1}}
+.sprig{position:absolute;left:46%;bottom:-10px;width:150px;color:var(--olive);transform:rotate(18deg)}
+.sprig path{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 2.2s 1s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ---------- Pás s rituály ---------- */
+.ticker{background:var(--terra);color:#FFF1DD;overflow:hidden;transform:rotate(-1.2deg);margin:10px -20px;box-shadow:0 8px 20px -12px rgba(0,0,0,.4)}
+.ticker div{display:flex;width:max-content;animation:ticker 38s linear infinite}
+.ticker span{font-family:var(--display);font-size:26px;padding:16px 26px;white-space:nowrap;display:flex;align-items:center;gap:52px}
+.ticker span::after{content:"";width:14px;height:14px;border-radius:50%;background:var(--lemon);box-shadow:0 0 0 5px rgba(242,198,65,.3)}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+/* ---------- Seznam úkolů → seznam radostí ---------- */
+.lists{padding-block:110px;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.lists h2{font-size:clamp(40px,4.6vw,64px)}
+.lists h2 em{font-style:normal;color:var(--terra)}
+.lists p{margin-top:22px;color:var(--soft);max-width:470px}
+.pad{background:var(--card);border-radius:6px;padding:34px 38px 38px;box-shadow:0 24px 40px -24px rgba(59,38,24,.4);transform:rotate(1.5deg);position:relative;
+  background-image:repeating-linear-gradient(180deg,transparent 0 47px,rgba(43,133,144,.18) 47px 48px);background-position:0 30px}
+.pad::before{content:"";position:absolute;top:-14px;left:50%;width:110px;height:30px;background:rgba(242,198,65,.75);transform:translateX(-50%) rotate(-3deg)}
+.pad h3{font-family:var(--hand);font-size:30px;font-weight:700;color:var(--soft);margin-bottom:6px}
+.pad ul{list-style:none;margin:0;padding:0}
+.pad li{display:grid;grid-template-columns:1fr;font-size:19px;min-height:48px;align-content:center;position:relative}
+.pad li s{text-decoration:none;color:var(--soft);position:relative;justify-self:start}
+.pad li s::after{content:"";position:absolute;left:-4px;right:-4px;top:55%;height:2px;background:var(--terra);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.6,0,.3,1)}
+.pad li b{font-family:var(--hand);font-size:28px;font-weight:700;color:var(--sea);position:absolute;left:56%;top:4px;opacity:0;transform:translateY(6px) rotate(-3deg);transition:opacity .5s,transform .5s}
+.pad.done li s::after{transform:scaleX(1)}
+.pad.done li b{opacity:1;transform:rotate(-3deg)}
+.pad.done li:nth-child(2) s::after,.pad.done li:nth-child(2) b{transition-delay:.45s}
+.pad.done li:nth-child(3) s::after,.pad.done li:nth-child(3) b{transition-delay:.9s}
+.pad.done li:nth-child(4) s::after,.pad.done li:nth-child(4) b{transition-delay:1.35s}
+
+/* ---------- V knize: pohlednice ---------- */
+.inside{background:var(--sand);padding-block:100px 110px;position:relative}
+.inside::before{content:"";position:absolute;left:0;right:0;top:-1px;height:24px;background:radial-gradient(circle at 12px 0,var(--paper) 12px,transparent 12.5px) 0 0/24px 24px repeat-x}
+.inside-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:30px;margin-bottom:54px}
+.inside h2{font-size:clamp(40px,4.6vw,64px);max-width:620px}
+.inside-head p{max-width:360px;color:var(--soft)}
+.inside-head p b{color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.card{background:var(--card);padding:14px 14px 26px;border-radius:4px;box-shadow:0 20px 34px -22px rgba(59,38,24,.5);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.card:nth-child(1){transform:rotate(-2deg)}.card:nth-child(2){transform:rotate(1.2deg) translateY(18px)}.card:nth-child(3){transform:rotate(-1deg)}
+.card:hover{transform:rotate(0) translateY(-8px) scale(1.02)}
+.card img{aspect-ratio:1/1;object-fit:cover;object-position:center 30%;width:100%}
+.card .num{font-family:var(--hand);font-size:24px;color:var(--terra);margin:16px 6px 2px}
+.card h3{font-size:26px;margin:0 6px 10px}
+.card p{margin:0 6px;color:var(--soft);font-size:17px}
+.all{margin-top:70px;text-align:center}
+.all details{display:inline-block;text-align:left;max-width:820px;width:100%}
+.all summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:12px;font-weight:700;padding:12px 22px;border:2px solid var(--ink);border-radius:999px;transition:background .2s}
+.all summary:hover{background:var(--card)}
+.all summary::-webkit-details-marker{display:none}
+.all summary::after{content:"+";font-size:22px;line-height:1;transition:transform .3s}
+.all details[open] summary::after{transform:rotate(45deg)}
+.all ol{margin:30px 0 0;padding:30px 30px 30px 60px;columns:2;column-gap:50px;background:var(--card);border-radius:6px;box-shadow:0 20px 34px -24px rgba(59,38,24,.5)}
+.all li{padding:5px 0;break-inside:avoid}
+.all li::marker{font-family:var(--hand);font-size:22px;color:var(--terra)}
+
+/* ---------- Citát jako dopis ---------- */
+.letter{background:var(--lemon);padding-block:120px;position:relative;overflow:hidden}
+.letter .wrap{position:relative}
+.letter blockquote{margin:0;max-width:880px;font-family:var(--display);font-size:clamp(32px,4.2vw,56px);line-height:1.18}
+.letter blockquote::before{content:"„";display:block;font-size:1.6em;line-height:0;height:.55em;color:var(--terra)}
+.letter cite{display:block;margin-top:30px;font-family:var(--hand);font-style:normal;font-size:32px;color:var(--terra)}
+.slice{position:absolute;right:-60px;top:50%;width:300px;translate:0 -50%;color:#FBE38A;animation:spin 60s linear infinite;opacity:.9}
+@keyframes spin{to{rotate:1turn}}
+
+/* ---------- Autorka ---------- */
+.author{padding-block:120px;display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:center}
+.polaroid{background:var(--card);padding:16px 16px 70px;box-shadow:0 30px 50px -28px rgba(59,38,24,.55);transform:rotate(-3deg);position:relative;max-width:420px}
+.polaroid::before{content:"";position:absolute;top:-16px;left:30px;width:100px;height:32px;background:rgba(43,133,144,.35);transform:rotate(-8deg)}
+.polaroid img{aspect-ratio:4/5;object-fit:cover}
+.polaroid span{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:var(--hand);font-size:30px;color:var(--soft)}
+.author h2{font-size:clamp(44px,5vw,70px);margin:8px 0 24px}
+.author p{color:var(--soft)}
+.author p+p{margin-top:16px}
+.author .lead{font-size:23px;line-height:1.45;color:var(--ink);font-family:var(--display)}
+.author .link{display:inline-block;margin-top:26px}
+
+/* ---------- Nabídka s cenovkou ---------- */
+.offer{padding-block:40px 120px}
+.offer-box{background:var(--card);border-radius:10px;display:grid;grid-template-columns:1fr 1.1fr;overflow:hidden;box-shadow:0 40px 70px -40px rgba(59,38,24,.55)}
+.offer-art{background:linear-gradient(160deg,#F7D98A,#EFB487);display:grid;place-items:center;padding:60px 40px;position:relative}
+.offer-art img{width:min(260px,70%);transform:rotate(-4deg);box-shadow:20px 26px 40px -18px rgba(59,38,24,.6);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.offer-art:hover img{transform:rotate(0) scale(1.03)}
+.tag{position:absolute;right:34px;top:42px;background:var(--card);padding:16px 26px 16px 38px;border-radius:6px 14px 14px 6px;transform:rotate(8deg);box-shadow:0 10px 18px -10px rgba(0,0,0,.4);transform-origin:left center;animation:swing 4s ease-in-out infinite;
+  clip-path:polygon(18px 0,100% 0,100% 100%,18px 100%,0 50%)}
+.tag::before{content:"";position:absolute;left:16px;top:50%;width:9px;height:9px;border-radius:50%;background:#EFB487;translate:0 -50%}
+.tag small{display:block;font-family:var(--hand);font-size:20px;color:var(--soft);line-height:1}
+.tag b{font-family:var(--display);font-weight:400;font-size:40px;line-height:1.1;color:var(--terra)}
+@keyframes swing{0%,100%{transform:rotate(8deg)}50%{transform:rotate(3deg)}}
+.offer-copy{padding:60px 60px 56px}
+.offer h2{font-size:clamp(36px,3.8vw,52px);margin:6px 0 16px}
+.specs{color:var(--soft);font-size:16px}
+.ticks{list-style:none;margin:26px 0 34px;padding:0;display:grid;gap:10px}
+.ticks li{display:flex;gap:12px;align-items:baseline}
+.ticks li::before{content:"";flex:none;width:16px;height:9px;border-left:2.5px solid var(--olive);border-bottom:2.5px solid var(--olive);transform:rotate(-45deg) translate(2px,-2px)}
+.pay{margin-top:20px;font-size:15px;color:var(--soft)}
+
+/* ---------- FAQ ---------- */
+.faq{padding-block:0 120px;display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.faq h2{font-size:clamp(36px,4vw,52px)}
+.faq details{background:var(--card);border-radius:10px;margin-bottom:12px;box-shadow:0 10px 20px -18px rgba(59,38,24,.5)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 54px 20px 24px;font-weight:700;font-size:19px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:22px;top:14px;font-size:28px;font-weight:400;color:var(--terra);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 24px 22px;color:var(--soft)}
+
+footer{border-top:1px dashed var(--line);padding-block:50px 120px;font-size:15px;color:var(--soft)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
+footer nav{flex-wrap:wrap;gap:10px 24px;font-size:15px;font-weight:400}
+
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;align-items:center;gap:14px;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(255,253,248,.95);backdrop-filter:blur(12px);border-top:1px dashed var(--line);transform:translateY(110%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.dock.show{transform:none}
+.dock img{width:38px;box-shadow:0 4px 10px -4px rgba(0,0,0,.4)}
+.dock div{flex:1;line-height:1.2}
+.dock b{font-family:var(--display);font-weight:400;font-size:21px;display:block}
+.dock small{font-size:13px;color:var(--soft)}
+.dock .btn{padding:12px 22px;box-shadow:0 3px 0 #7E3216}
+
+.sheet[hidden]{display:none}
+.sheet{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:rgba(59,38,24,.4);backdrop-filter:blur(4px)}
+.sheet-box{background:var(--card);border-radius:14px;padding:32px;max-width:420px;box-shadow:0 30px 60px -20px rgba(0,0,0,.4);animation:up .4s cubic-bezier(.2,.8,.2,1)}
+.sheet-box h3{font-size:28px;margin-bottom:10px}
+.sheet-box p{color:var(--soft);font-size:16px;margin-bottom:22px}
+
+.js .reveal{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.js .reveal.wait{opacity:0;transform:translateY(34px)}
+
+@media (max-width:960px){
+  nav{display:none}
+  .hero,.lists,.author,.faq{grid-template-columns:1fr;gap:50px}
+  .hero{padding-block:40px 70px}
+  .desk{min-height:auto;aspect-ratio:1/1.02;max-width:560px;width:100%;justify-self:center}
+  .cards{grid-template-columns:1fr;gap:40px;max-width:460px;margin-inline:auto}
+  .card:nth-child(2){transform:rotate(1.2deg)}
+  .all ol{columns:1;padding-left:50px}
+  .offer-box{grid-template-columns:1fr}
+  .offer-copy{padding:40px 26px}
+  .polaroid{margin-inline:auto}
+  .dock{display:flex}
+}
+@media (max-width:560px){
+  body{font-size:17px}
+  .logo{font-size:20px}
+  .head .btn small{display:none}
+  .hero .sub{font-size:20px}
+  .actions .btn{width:100%;justify-content:center}
+  .pc-back{padding:16px 14px 18px;top:auto;bottom:0;grid-template-columns:1fr 64px;gap:10px}
+  .pc-back .msg{font-size:20px;padding-right:10px}
+  .stamp{width:64px}
+  .postmark{width:76px;right:6px;top:auto;bottom:70px}
+  .lines{display:none}
+  .pad{padding:28px 22px 30px}
+  .pad{background-image:none}
+  .pad li{font-size:17px;padding:8px 0;border-bottom:1px solid rgba(43,133,144,.18)}
+  .sprig{display:none}
+  .pad li b{position:static;font-size:24px;margin-top:-6px;margin-bottom:6px}
+  .ticker span{font-size:21px}
+  .lists,.author{padding-block:80px}
+  .inside,.letter{padding-block:80px}
+  .tag{right:16px;top:20px;padding:10px 18px 10px 32px}
+  .tag b{font-size:30px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .sprig path{stroke-dashoffset:0}
+  .js .reveal.wait{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+<header>
+  <div class="wrap head">
+    <a class="logo" href="#"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></g></svg>Žít po italsku</a>
+    <nav aria-label="Navigace"><a href="#kniha">O&nbsp;knize</a><a href="#uvnitr">Uvnitř</a><a href="#autorka">Autorka</a><a href="#otazky">Otázky</a></nav>
+    <a class="btn" href="#objednat" data-buy>Objednat <small data-price></small></a>
+  </div>
+</header>
+
+<main>
+<section class="wrap hero" aria-labelledby="titul">
+  <div class="hero-copy">
+    <span class="kicker">Nová kniha Lindy Valešové</span>
+    <h1 id="titul">Žít <span>po&nbsp;italsku</span></h1>
+    <p class="sub">Pohlednice z&nbsp;Itálie do vašich obyčejných dní. <b>Jak zpomalit, cítit a&nbsp;opravdu žít</b>, i&nbsp;když zítra zase musíte do práce.</p>
+    <div class="actions">
+      <a class="btn" href="#objednat" data-buy>Chci svou knihu <small data-price></small></a>
+      <a class="link" href="#uvnitr">Co je uvnitř</a>
+    </div>
+    <p class="note"><i></i>Odesíláme do 2 pracovních dnů. Platba kartou, Apple Pay i&nbsp;Google Pay.</p>
+  </div>
+  <div class="desk" aria-hidden="false">
+    <figure class="postcard pc-photo" style="margin:0">
+      <img src="../assets/ranni-kava.webp" width="640" height="800" alt="Ilustrace ženy s šálkem kávy u stolku pod citroníkem" fetchpriority="high">
+      <figcaption>Ranní káva vsedě</figcaption>
+    </figure>
+    <div class="postcard pc-back">
+      <p class="msg">Ciao! Tuhle knihu jsem psala u&nbsp;ranní kávy. Ať vám dodá odvahu zpomalit.<span>Linda</span></p>
+      <div class="stamp"><img src="../assets/obalka.webp" width="512" height="800" alt="Obálka knihy Žít po italsku"></div>
+      <div class="lines" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+    <svg class="postmark" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="42" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="60" cy="60" r="32" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="60" y="56" text-anchor="middle" font-family="Karla,sans-serif" font-size="11" font-weight="700" fill="currentColor" letter-spacing="1">CON CALMA</text><text x="60" y="72" text-anchor="middle" font-family="Karla,sans-serif" font-size="11" fill="currentColor">2026</text><path d="M104 44c10-6 20 6 30 0M104 60c10-6 20 6 30 0M104 76c10-6 20 6 30 0" fill="none" stroke="currentColor" stroke-width="2.5" transform="translate(-6 0)"/></svg>
+    <svg class="sprig" viewBox="0 0 150 120" aria-hidden="true"><path d="M8 110C50 80 90 50 140 12M40 88c-14-20-4-34 10-38 6 16 2 30-10 38M66 68c-6-24 8-34 22-34 0 18-8 28-22 34M92 46c-2-22 12-30 26-28-2 16-12 26-26 28M44 86c22 6 38-2 44-16-18-6-34 0-44 16M72 64c22 4 36-6 40-20-18-4-32 4-40 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div>
+  <span>pomalejší rána</span><span>dlouhé obědy</span><span>káva vsedě</span><span>radost z&nbsp;maličkostí</span><span>večery bez spěchu</span><span>pomalejší rána</span><span>dlouhé obědy</span><span>káva vsedě</span><span>radost z&nbsp;maličkostí</span><span>večery bez spěchu</span>
+</div></div>
+
+<section class="wrap lists" id="kniha" aria-labelledby="tempo">
+  <div class="reveal">
+    <span class="kicker">O&nbsp;knize</span>
+    <h2 id="tempo" style="margin-top:10px">Itálie není země. <em>Je to tempo.</em></h2>
+    <p>Tahle kniha vám nepřidá další úkoly. Spíš vám ukáže, které můžete klidně škrtnout. Linda píše o&nbsp;kávě, jídle, práci, odpočinku i&nbsp;vztazích, tak jak je poznala v&nbsp;Itálii, a&nbsp;o&nbsp;tom, jak si tu lehkost vzít domů.</p>
+  </div>
+  <div class="pad" id="pad">
+    <h3>Dnes musím…</h3>
+    <ul>
+      <li><s>Snídaně cestou do auta</s><b>cornetto vsedě</b></li>
+      <li><s>Oběd u&nbsp;počítače</s><b>dlouhý oběd s&nbsp;přáteli</b></li>
+      <li><s>Odpočinek až po práci</s><b>il dolce far niente</b></li>
+      <li><s>Do Itálie až příští léto</s><b>Itálie už dnes</b></li>
+    </ul>
+  </div>
+</section>
+
+<section class="inside" id="uvnitr" aria-labelledby="v-knize">
+  <div class="wrap">
+    <div class="inside-head reveal">
+      <div><span class="kicker">Uvnitř knihy</span><h2 id="v-knize" style="margin-top:10px">Trochu Itálie. O&nbsp;něco víc vás.</h2></div>
+      <p><b>16 kapitol</b> o&nbsp;obyčejném životě, který stojí za pozornost, a&nbsp;<b>30 malých rozhodnutí</b>, kterými můžete začít hned zítra ráno.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal"><img src="../assets/ranni-kava.webp" width="640" height="800" loading="lazy" alt="Ilustrace ranní kávy pod citroníkem"><p class="num">kapitola 2</p><h3>Ráno, které určuje den</h3><p>Otevřít okno. Vypít kávu bez telefonu. Nechat první minuty dne jen sobě.</p></article>
+      <article class="card reveal"><img src="../assets/u-stolu.webp" width="640" height="800" loading="lazy" alt="Ilustrace společného oběda na terase nad mořem"><p class="num">kapitola 3</p><h3>Jídlo jako rituál, ne jako povinnost</h3><p>Sednout si. Ochutnat. Být spolu. I&nbsp;obyčejná večeře může být malá slavnost.</p></article>
+      <article class="card reveal"><img src="../assets/chvile-pro-sebe.webp" width="640" height="800" loading="lazy" alt="Ilustrace ženy s knihou na lehátku nad mořem"><p class="num">kapitola 8</p><h3>Il dolce far niente</h3><p>Chvíle, kdy nic nemusíte. Bez výčitek a&nbsp;bez seznamu úkolů.</p></article>
+    </div>
+    <div class="all">
+      <details>
+        <summary>Ukázat všech 16 kapitol</summary>
+        <ol>
+          <li>Itálie není země. Je to tempo.</li><li>Ráno, které určuje den</li><li>Jídlo jako rituál, ne jako povinnost</li><li>Styl jako energie</li><li>Komunikace, která nikam nespěchá</li><li>Práce bez permanentního napětí</li><li>Volný čas bez pocitu viny</li><li>Il dolce far niente</li><li>Italská dlouhověkost: co za ní skutečně je</li><li>Nedokonalost, která nechá člověka dýchat</li><li>Radost jako způsob života</li><li>Italové a&nbsp;rodina</li><li>Jak Itálie změnila moje vztahy</li><li>Samota, která není prázdná</li><li>Kde je domov, když se člověk změní</li><li>Jak si vytvořit vlastní italský svět odkudkoli</li>
+        </ol>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="letter" aria-label="Ukázka z knihy">
+  <svg class="slice" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="8"/><g fill="currentColor"><path d="M100 100L100 14A86 86 0 0 1 160.8 39.2Z"/><path d="M100 100L160.8 39.2A86 86 0 0 1 186 100Z" opacity=".75"/><path d="M100 100L186 100A86 86 0 0 1 160.8 160.8Z"/><path d="M100 100L160.8 160.8A86 86 0 0 1 100 186Z" opacity=".75"/><path d="M100 100L100 186A86 86 0 0 1 39.2 160.8Z"/><path d="M100 100L39.2 160.8A86 86 0 0 1 14 100Z" opacity=".75"/><path d="M100 100L14 100A86 86 0 0 1 39.2 39.2Z"/><path d="M100 100L39.2 39.2A86 86 0 0 1 100 14Z" opacity=".75"/></g><g stroke="var(--lemon)" stroke-width="5"><path d="M100 10v180M10 100h180M36 36l128 128M164 36L36 164"/></g></svg>
+  <div class="wrap reveal">
+    <blockquote>Život nezačne, až budete mít víc času. Začne ve chvíli, kdy mu ten čas dáte.</blockquote>
+    <cite>Linda Valešová, z&nbsp;knihy Žít po italsku</cite>
+  </div>
+</section>
+
+<section class="wrap author" id="autorka" aria-labelledby="linda">
+  <div class="polaroid reveal"><img src="../assets/italska-ulicka.webp" width="800" height="1000" loading="lazy" alt="Ilustrace ženy v uličce plné bugenvílií s výhledem na moře"><span>La vita, con calma.</span></div>
+  <div class="reveal">
+    <span class="kicker">Autorka</span>
+    <h2 id="linda">Linda Valešová</h2>
+    <p class="lead">Itálie pro ni začala jako láska. Stala se cestou zpátky k&nbsp;sobě.</p>
+    <p style="margin-top:20px">Italštině a&nbsp;italské kultuře se věnuje přes třináct let. Našla v&nbsp;nich víc než krásná místa a&nbsp;nový jazyk: jiný pohled na čas, vztahy, práci i&nbsp;radost z&nbsp;obyčejných dní.</p>
+    <p>Kniha vznikla z&nbsp;ranních káv, dlouhých obědů a&nbsp;rozhovorů, které nikam nespěchaly. V&nbsp;projektu Objev Itálii pomáhá ostatním přenést si kus téhle lehkosti domů.</p>
+    <a class="link" href="#">Projekt Objev Itálii</a>
+  </div>
+</section>
+
+<section class="wrap offer" id="objednat" aria-labelledby="koupit">
+  <div class="offer-box reveal">
+    <div class="offer-art">
+      <img src="../assets/obalka.webp" width="512" height="800" loading="lazy" alt="Obálka knihy Žít po italsku">
+      <div class="tag"><small>jen</small><b data-price></b></div>
+    </div>
+    <div class="offer-copy">
+      <span class="kicker">Pro vás nebo jako dárek</span>
+      <h2 id="koupit">Italská lehkost začíná první stránkou.</h2>
+      <p class="specs">Brožovaná · 160 stran · 135 × 210 mm</p>
+      <ul class="ticks">
+        <li>Odesíláme do 2 pracovních dnů</li>
+        <li>Hodí se pod stromeček i&nbsp;k&nbsp;narozeninám</li>
+        <li>Do 14 dnů můžete knihu bez udání důvodu vrátit</li>
+      </ul>
+      <a class="btn" href="#" data-buy>Objednat knihu <small data-price></small></a>
+      <p class="pay">Kartou, Apple Pay nebo Google Pay. Platbu bezpečně zpracuje Stripe.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap faq" id="otazky" aria-labelledby="dotazy">
+  <div class="reveal"><span class="kicker">Než objednáte</span><h2 id="dotazy" style="margin-top:10px">Na co se lidé ptají</h2></div>
+  <div class="reveal">
+    <details><summary>Jak zaplatím?</summary><p>Kartou, přes Apple Pay nebo Google Pay. Platba proběhne na zabezpečené stránce Stripe a&nbsp;údaje o&nbsp;vaší kartě k&nbsp;nám vůbec nedorazí.</p></details>
+    <details><summary>Kdy kniha dorazí?</summary><p>Odesíláme do dvou pracovních dnů. Po České republice bývá zásilka doma obvykle za 1–3 dny.</p></details>
+    <details><summary>Můžu knihu poslat jako dárek?</summary><p>Samozřejmě. Při platbě stačí vyplnit adresu toho, komu má kniha udělat radost.</p></details>
+    <details><summary>Co když mi kniha nesedne?</summary><p>Do 14 dnů od převzetí ji můžete vrátit a&nbsp;peníze vám pošleme zpátky.</p></details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Linda Valešová · Žít po italsku</span>
+    <nav aria-label="Patička"><a href="#">Obchodní podmínky</a><a href="#">Ochrana osobních údajů</a><a href="#">Kontakt</a></nav>
+  </div>
+</footer>
+
+<div class="dock" aria-label="Rychlý nákup">
+  <img src="../assets/obalka.webp" width="512" height="800" alt="">
+  <div><b data-price></b><small>Žít po italsku · kniha</small></div>
+  <a class="btn" href="#objednat" data-buy>Objednat</a>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-box" role="dialog" aria-modal="true" aria-labelledby="sheet-t">
+    <h3 id="sheet-t">Tady se otevře platba</h3>
+    <p>V&nbsp;hotovém webu tlačítko vede rovnou na platební stránku Stripe: zadání adresy, karta, Apple Pay nebo Google Pay. Odkaz se doplní na jedno místo v&nbsp;kódu.</p>
+    <button class="btn" type="button" data-close>Rozumím</button>
+  </div>
+</div>
+
+<script>
+/* Jediné místo pro prodejní údaje. Cena je ukázková. */
+const SHOP = { price: 399, stripeLink: '' }; // stripeLink: 'https://buy.stripe.com/…'
+const kc = n => new Intl.NumberFormat('cs-CZ').format(n) + ' Kč';
+document.querySelectorAll('[data-price]').forEach(el => el.textContent = kc(SHOP.price));
+const sheet = document.getElementById('sheet');
+document.querySelectorAll('[data-buy]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  if (SHOP.stripeLink) location.href = SHOP.stripeLink; else sheet.hidden = false;
+}));
+sheet.addEventListener('click', e => { if (e.target === sheet || e.target.closest('[data-close]')) sheet.hidden = true; });
+addEventListener('keydown', e => { if (e.key === 'Escape') sheet.hidden = true; });
+
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const pad = document.getElementById('pad');
+if (calm || !('IntersectionObserver' in window)) pad.classList.add('done');
+else {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('wait'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('wait'); io.observe(el); } });
+  /* Seznam úkolů se přeškrtá, až na něj čtenář dojede. */
+  const po = new IntersectionObserver(([e]) => { if (e.isIntersecting) { pad.classList.add('done'); po.disconnect(); } }, { threshold: .6 });
+  po.observe(pad);
+}
+const dock = document.querySelector('.dock'), hero = document.querySelector('.hero'), offer = document.getElementById('objednat');
+let heroOut = false, offerIn = false;
+const sync = () => dock.classList.toggle('show', heroOut && !offerIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; sync(); }).observe(hero);
+new IntersectionObserver(([e]) => { offerIn = e.isIntersecting; sync(); }).observe(offer);
+</script>
+</body>
+</html>
