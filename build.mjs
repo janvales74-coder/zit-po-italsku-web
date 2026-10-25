@@ -5,7 +5,7 @@ mkdirSync('dist', { recursive: true });
 const writeFileSync = (path, data) => write(path.startsWith('docs/') ? path : 'dist/' + path, data);
 cpSync('assets', 'dist/assets', { recursive: true });
 for (const file of ['styles.css', 'app.js']) cpSync(file, 'dist/' + file);
-if (existsSync('varianty')) cpSync('varianty', 'dist/varianty', { recursive: true }); // Návrhy designu k porovnání: /varianty/
+if (existsSync('varianty')) cpSync('varianty', 'dist/varianty', { recursive: true }); // Návrh nového webu (Dolce vita): /varianty/dolce-vita.html
 const {copy:t,product:p}=config;
 const esc = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const txt = s => esc(s).replace(/\b([aAiIkKoOsSuUvVzZ]) /g,'$1\u00a0').replace(/\n/g,'<br> ');
